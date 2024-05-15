@@ -1,0 +1,7 @@
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.src.view.Loading.resources
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.csproj.GenerateResource.cache
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.AssemblyInfoInputs.cache
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.AssemblyInfo.cs
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.csproj.CoreCompileInputs.cache
+C:\Users\CLAUDIA\Desktop\TransportOptimizer\obj\Debug\net8.0-windows\TransportOptimizer.src.view.Main.resources

@@ -1,20 +1,17 @@
-﻿
-namespace RicercaOperativa
+namespace TransportOptimizer
 {
-    static class Program
+    internal static class Program
     {
-        [System.STAThread]
-
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
         static void Main()
         {
-            if (System.Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
-            System.Windows.Forms.Application.EnableVisualStyles();
-            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            System.Windows.Forms.Application.Run(new Loading());
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new src.view.Loading());
         }
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        
-        private static extern bool SetProcessDPIAware();
     }
 }
