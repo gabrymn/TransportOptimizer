@@ -1,4 +1,4 @@
-# Transportation Problem Solver
+# Operations Research: Transport Optimizer
 
 This C# application is designed to solve transportation problems using various methods including Vogel's Approximation Method, Russell's Approximation Method, Least Cost Method, and Northwest Corner Method.
 
