@@ -7,8 +7,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.Emit;
 using TransportOptimizer.src.utils;
 using TransportOptimizer.src.model;
-using TransportOptimizer.src.middleware;
-
 
 namespace TransportOptimizer.src.view
 {
@@ -37,7 +35,7 @@ namespace TransportOptimizer.src.view
 
         public void SetMSComboBox()
         {
-            methods.Items.AddRange(Const.Methods);
+            methods.Items.AddRange(Const.METHODS);
             methods.Sorted = false;
             methods.SelectedItem = methods.Items[0];
         }
@@ -49,7 +47,7 @@ namespace TransportOptimizer.src.view
             foreach (var tb in tbs)
             {
                 tb.Tag = tag; tag++;
-                tb.Text = Const.Terms[(int)tb.Tag];
+                tb.Text = Const.TERMS[(int)tb.Tag];
                 tb.ForeColor = Color.Silver;
                 tb.GotFocus += RemoveText;
                 tb.LostFocus += AddText;
@@ -61,7 +59,7 @@ namespace TransportOptimizer.src.view
             System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
             tb.ForeColor = Color.Black;
 
-            if (tb.Text == Const.Terms[(int)tb.Tag])
+            if (tb.Text == Const.TERMS[(int)tb.Tag])
                 tb.Text = string.Empty;
         }
 
@@ -72,7 +70,7 @@ namespace TransportOptimizer.src.view
             if (string.IsNullOrWhiteSpace(tb.Text))
             {
                 tb.ForeColor = Color.Silver;
-                tb.Text = Const.Terms[(int)tb.Tag];
+                tb.Text = Const.TERMS[(int)tb.Tag];
             }
         }
 
@@ -84,7 +82,7 @@ namespace TransportOptimizer.src.view
                 return;
             }
 
-            if (!(Utils.SkipCheck(textBox1.Text, textBox2.Text, Const.Terms)))
+            if (!(Utils.SkipCheck(textBox1.Text, textBox2.Text, Const.TERMS)))
             {
                 if (textBox1.Text != string.Empty && textBox2.Text != string.Empty)
                     if (table.RowsCount != int.Parse(textBox1.Text) || table.ColumnsCount != int.Parse(textBox2.Text))
@@ -97,7 +95,7 @@ namespace TransportOptimizer.src.view
         {
             System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
 
-            if (!Const.Terms.Contains(tb.Text))
+            if (!Const.TERMS.Contains(tb.Text))
                 Utils.ValidateTextBox(tb);
         }
 
@@ -114,7 +112,7 @@ namespace TransportOptimizer.src.view
                 return;
             }
 
-            if (!Utils.SkipCheck(tbMinVal.Text, tbMaxVal.Text, Const.Terms))
+            if (!Utils.SkipCheck(tbMinVal.Text, tbMaxVal.Text, Const.TERMS))
             {
                 var min = int.Parse(tbMinVal.Text);
                 var max = int.Parse(tbMaxVal.Text);
@@ -165,12 +163,12 @@ namespace TransportOptimizer.src.view
             if (table.Full == false)
             {
                 System.Media.SystemSounds.Hand.Play();
-                MessageBox.Show("L'esecuzione di questa funzione richiede che\ntutte le celle della tabella siano compilate");
+                MessageBox.Show(Const.ALL_CELLS_REQ_MSG);
             }
             else if (table.ControlStart() == false)
             {
                 System.Media.SystemSounds.Hand.Play();
-                MessageBox.Show("Controllare dati ultima riga e ultima colonna");
+                MessageBox.Show(Const.CHECK_LAST_ROW_COLUMN_DATA_MSG);
             }
             else
             {
@@ -195,7 +193,7 @@ namespace TransportOptimizer.src.view
             }
             catch (Exception e)
             {
-                MessageBox.Show("A causa di un errore i tuoi dati sono stati persi :(");
+                MessageBox.Show(Const.LOST_DATA_MSG);
                 Console.WriteLine(e);
                 table = new Table(15, 15, dataGridView1, true);
             }

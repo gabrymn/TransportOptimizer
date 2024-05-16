@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 using TransportOptimizer.src.utils;
 
 namespace TransportOptimizer.src.view
@@ -17,7 +16,7 @@ namespace TransportOptimizer.src.view
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = Const.MinMsTimeout;
+            timer.Interval = Const.MIN_MS_TIMEOUT;
             progressBar.Width = 0;
         }
 
@@ -30,7 +29,7 @@ namespace TransportOptimizer.src.view
 
         private void Loading_Load(object sender, EventArgs e)
         {
-            Run(delay: Const.MinMsTimeout);
+            Run(delay: Const.MIN_MS_TIMEOUT);
         }
 
         private void Run(int delay)

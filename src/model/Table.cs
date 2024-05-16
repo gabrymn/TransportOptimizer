@@ -36,7 +36,7 @@ namespace TransportOptimizer.src.model
             this.rowsCount = rowsCount;
             this.columnsCount = columnsCount;
             this.view = view;
-            view.Font = new Font(Const.FONT.Cells, Const.FONT.CellsSize, Const.FONT.StdForm);
+            view.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);
             if (enable) Enable();
         }
 
@@ -45,7 +45,7 @@ namespace TransportOptimizer.src.model
             this.rowsCount = rowsCount;
             this.columnsCount = columnsCount;
             this.view = view;
-            view.Font = new Font(Const.FONT.Cells, Const.FONT.CellsSize, Const.FONT.StdForm);
+            view.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);
             if (enable) Enable();
             SetData(data);
         }
@@ -126,7 +126,7 @@ namespace TransportOptimizer.src.model
         private void SetVisualElements()
         {
             SetStructTable();
-            SetHeaders("UP", "D", "TOTALI");
+            SetHeaders(Const.ATTR_UNIT_PROD, Const.ATTR_DEST, Const.ATTR_TOTAL_NAME);
             Iterate(value: string.Empty);
             SetBackground();
             SetSize(140, 60);
@@ -163,11 +163,11 @@ namespace TransportOptimizer.src.model
 
             view.Rows[rowsCount].HeaderCell.Value = keyLast;
             view.Rows[rowsCount].HeaderCell.Style.ForeColor = Color.Aqua;
-            view.Rows[rowsCount].HeaderCell.Style.Font = new Font(Const.FONT.Cells, Const.FONT.CellsSize, Const.FONT.LastForm);
+            view.Rows[rowsCount].HeaderCell.Style.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_LAST);
 
             view.Columns[columnsCount].HeaderText = keyLast;
             view.Columns[columnsCount].HeaderCell.Style.ForeColor = Color.Aqua;
-            view.Columns[columnsCount].HeaderCell.Style.Font = new Font(Const.FONT.Cells, Const.FONT.CellsSize, Const.FONT.LastForm);
+            view.Columns[columnsCount].HeaderCell.Style.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_LAST);
 
             view.Rows[rowsCount].HeaderCell.Style.BackColor = Color.Black;
             view.Columns[columnsCount].HeaderCell.Style.BackColor = Color.Black;
@@ -518,7 +518,7 @@ namespace TransportOptimizer.src.model
         {
             rc = rc.ToLower();
 
-            if (rc == "row")
+            if (rc == Const.ROW)
             {
                 int min1 = 0;
                 for (int i = 1; i < ColumnsCount; i++)
@@ -541,7 +541,7 @@ namespace TransportOptimizer.src.model
                 );
             }
 
-            if (rc == "column")
+            if (rc == Const.COLUMN)
             {
                 int min1 = 0;
                 for (int i = 1; i < RowsCount; i++)

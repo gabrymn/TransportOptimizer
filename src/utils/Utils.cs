@@ -81,5 +81,14 @@ namespace TransportOptimizer.src.utils
             v2 = v1;
             v1 = t;
         }
+
+        public static bool EqualsICase(string str1, string str2)
+        {
+            if (str1 == null || str2 == null)
+                return false;
+
+            bool equals = string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
+            return equals;
+        }
     }
 }

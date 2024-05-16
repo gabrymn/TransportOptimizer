@@ -29,155 +29,148 @@ namespace TransportOptimizer.src.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgv1 = new System.Windows.Forms.DataGridView();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exit0 = new System.Windows.Forms.Button();
-            this.save0 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            dgv1 = new DataGridView();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            exit0 = new Button();
+            save0 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgv1).BeginInit();
+            SuspendLayout();
             // 
             // dgv1
             // 
-            this.dgv1.AllowUserToAddRows = false;
-            this.dgv1.AllowUserToDeleteRows = false;
-            this.dgv1.AllowUserToResizeColumns = false;
-            this.dgv1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
-            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
-            this.dgv1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Yu Gothic UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv1.ColumnHeadersHeight = 50;
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgv1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column4,
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv1.EnableHeadersVisualStyles = false;
-            this.dgv1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.dgv1.Location = new System.Drawing.Point(22, 17);
-            this.dgv1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgv1.Name = "dgv1";
-            this.dgv1.ReadOnly = true;
-            this.dgv1.RowHeadersVisible = false;
-            this.dgv1.RowHeadersWidth = 51;
-            this.dgv1.RowTemplate.Height = 50;
-            this.dgv1.RowTemplate.ReadOnly = true;
-            this.dgv1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(644, 548);
-            this.dgv1.TabIndex = 3;
+            dgv1.AllowUserToAddRows = false;
+            dgv1.AllowUserToDeleteRows = false;
+            dgv1.AllowUserToResizeColumns = false;
+            dgv1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 48, 52);
+            dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgv1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv1.BackgroundColor = Color.FromArgb(34, 31, 46);
+            dgv1.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgv1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(15, 16, 18);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgv1.ColumnHeadersHeight = 50;
+            dgv1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgv1.Columns.AddRange(new DataGridViewColumn[] { Column4, Column1, Column2, Column3 });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(114, 117, 119);
+            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv1.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv1.EnableHeadersVisualStyles = false;
+            dgv1.GridColor = Color.FromArgb(50, 56, 62);
+            dgv1.Location = new Point(26, 20);
+            dgv1.Margin = new Padding(2);
+            dgv1.Name = "dgv1";
+            dgv1.ReadOnly = true;
+            dgv1.RowHeadersVisible = false;
+            dgv1.RowHeadersWidth = 51;
+            dgv1.RowTemplate.Height = 50;
+            dgv1.RowTemplate.ReadOnly = true;
+            dgv1.ScrollBars = ScrollBars.Vertical;
+            dgv1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv1.Size = new Size(751, 380);
+            dgv1.TabIndex = 3;
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "ID";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            Column4.HeaderText = "ID";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Quantità";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            Column1.HeaderText = "Quantity";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Movimento";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            Column2.HeaderText = "Movement";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Costo";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            Column3.HeaderText = "Cost";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
             // 
             // exit0
             // 
-            this.exit0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exit0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
-            this.exit0.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exit0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exit0.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exit0.ForeColor = System.Drawing.Color.White;
-            this.exit0.Location = new System.Drawing.Point(258, 578);
-            this.exit0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.exit0.Name = "exit0";
-            this.exit0.Size = new System.Drawing.Size(174, 46);
-            this.exit0.TabIndex = 4;
-            this.exit0.Text = "Esci";
-            this.exit0.UseVisualStyleBackColor = false;
-            this.exit0.Click += new System.EventHandler(this.exit0_Click);
+            exit0.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            exit0.BackColor = Color.FromArgb(34, 31, 46);
+            exit0.Cursor = Cursors.Hand;
+            exit0.FlatStyle = FlatStyle.Flat;
+            exit0.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            exit0.ForeColor = Color.White;
+            exit0.Location = new Point(301, 415);
+            exit0.Margin = new Padding(2);
+            exit0.Name = "exit0";
+            exit0.Size = new Size(203, 53);
+            exit0.TabIndex = 4;
+            exit0.Text = "Exit";
+            exit0.UseVisualStyleBackColor = false;
+            exit0.Click += exit0_Click;
             // 
             // save0
             // 
-            this.save0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.save0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(31)))), ((int)(((byte)(46)))));
-            this.save0.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.save0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save0.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save0.ForeColor = System.Drawing.Color.Aqua;
-            this.save0.Location = new System.Drawing.Point(436, 578);
-            this.save0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.save0.Name = "save0";
-            this.save0.Size = new System.Drawing.Size(230, 46);
-            this.save0.TabIndex = 5;
-            this.save0.Text = "Salva (JSON)";
-            this.save0.UseVisualStyleBackColor = false;
-            this.save0.Click += new System.EventHandler(this.save0_Click);
+            save0.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            save0.BackColor = Color.FromArgb(34, 31, 46);
+            save0.Cursor = Cursors.Hand;
+            save0.FlatStyle = FlatStyle.Flat;
+            save0.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            save0.ForeColor = Color.Aqua;
+            save0.Location = new Point(509, 415);
+            save0.Margin = new Padding(2);
+            save0.Name = "save0";
+            save0.Size = new Size(268, 53);
+            save0.TabIndex = 5;
+            save0.Text = "Save (JSON)";
+            save0.UseVisualStyleBackColor = false;
+            save0.Click += save0_Click;
             // 
             // Summary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(61)))), ((int)(((byte)(76)))));
-            this.ClientSize = new System.Drawing.Size(689, 644);
-            this.Controls.Add(this.save0);
-            this.Controls.Add(this.exit0);
-            this.Controls.Add(this.dgv1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MinimumSize = new System.Drawing.Size(695, 251);
-            this.Name = "Summary";
-            this.ShowIcon = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reseconto";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Summary_FormClosing);
-            this.Load += new System.EventHandler(this.Final_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(64, 61, 76);
+            ClientSize = new Size(804, 491);
+            Controls.Add(save0);
+            Controls.Add(exit0);
+            Controls.Add(dgv1);
+            Margin = new Padding(2);
+            MinimumSize = new Size(808, 284);
+            Name = "Summary";
+            ShowIcon = false;
+            SizeGripStyle = SizeGripStyle.Show;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Summary";
+            FormClosing += Summary_FormClosing;
+            Load += Final_Load;
+            ((System.ComponentModel.ISupportInitialize)dgv1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

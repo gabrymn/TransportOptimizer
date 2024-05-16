@@ -51,26 +51,26 @@ namespace TransportOptimizer.src.view
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 30, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(32, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(1136, 179);
             this.label2.TabIndex = 10;
-            this.label2.Text = "NORD-OVEST    MINIMI-COSTI    VOGEL    RUSSELL";
+            this.label2.Text = "Northwest    Leastcost    Vogel    Russell";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 70, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Aqua;
             this.label1.Location = new System.Drawing.Point(32, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1136, 269);
             this.label1.TabIndex = 9;
-            this.label1.Text = "RICERCA OPERATIVA";
+            this.label1.Text = "Transport Optimizer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // progressBar

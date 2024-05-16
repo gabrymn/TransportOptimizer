@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransportOptimizer.src.model;
+using TransportOptimizer.src.utils;
 
 namespace TransportOptimizer.src.algo
 {
+    /// <summary>
+    /// Northwest Corner Method
+    /// </summary>
     internal static class NorthwestCorner
     {
         public static bool Run(ref List<SummaryData> list, ref Table table)
@@ -53,7 +57,7 @@ namespace TransportOptimizer.src.algo
                     obj.FromTo = table.GetHeaderRowAt(0) + " - " + table.GetHeaderColumnAt(0);
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
-                    SummaryData sum = new SummaryData("TOTALE", SummaryData.Sum(list.ToArray(), "quantity"), null, SummaryData.Sum(list.ToArray(), "price"));
+                    SummaryData sum = new SummaryData(Const.ATTR_TOTAL_NAME, SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), null, SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME));
                     list.Add(sum);
                     table.VisibleStatus(false);
 

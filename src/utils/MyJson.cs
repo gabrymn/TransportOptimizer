@@ -19,7 +19,7 @@ namespace TransportOptimizer.src.utils
                         File.AppendAllText(path, start + t.ToString() + end); break;
                 }
             }
-            catch (FileNotFoundException) { System.Windows.Forms.MessageBox.Show("Pacchetto JSON non trovato, verificare percorso..."); }
+            catch (FileNotFoundException) { System.Windows.Forms.MessageBox.Show(Const.PACKAGE_NOT_FOUND_MSG); }
             catch (ArgumentException e) { HandleE(e); }
             catch (PathTooLongException e) { HandleE(e); }
             catch (DirectoryNotFoundException e) { HandleE(e); }

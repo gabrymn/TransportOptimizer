@@ -8,6 +8,9 @@ using TransportOptimizer.src.utils;
 
 namespace TransportOptimizer.src.algo
 {
+    /// <summary>
+    /// Vogel's Approximation Method (VAM)
+    /// </summary>
     internal class VogelApprox
     {
         public static bool Run(ref List<SummaryData> list, ref Table table)
@@ -18,14 +21,14 @@ namespace TransportOptimizer.src.algo
             {
                 if (table.RowsCount > 1 || table.ColumnsCount > 1)
                 {
-                    int[] xline = new int[table.ColumnsCount]; // ORIZZONTALE
-                    int[] yline = new int[table.RowsCount];    // VERTICALE
+                    int[] xline = new int[table.ColumnsCount]; // |
+                    int[] yline = new int[table.RowsCount];    // _
 
                     for (int i = 0; i < table.RowsCount; i++)
-                        yline[i] = table.DeltaM("ROW", i);
+                        yline[i] = table.DeltaM(Const.ROW.ToUpper(), i);
 
                     for (int i = 0; i < table.ColumnsCount; i++)
-                        xline[i] = table.DeltaM("COLUMN", i);
+                        xline[i] = table.DeltaM(Const.COLUMN.ToUpper(), i);
 
                     int maxR = xline[0];
                     for (int i = 1; i < xline.Length; i++)
@@ -110,7 +113,7 @@ namespace TransportOptimizer.src.algo
                     obj.FromTo = table.GetHeaderRowAt(0) + " - " + table.GetHeaderColumnAt(0);
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
-                    SummaryData sum = new SummaryData("TOTALE", SummaryData.Sum(list.ToArray(), "quantity"), null, SummaryData.Sum(list.ToArray(), "price"));
+                    SummaryData sum = new SummaryData(Const.ATTR_TOTAL_NAME, SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), null, SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME));
                     list.Add(sum);
                     table.VisibleStatus(false);
                     return false;

@@ -13,18 +13,21 @@ namespace TransportOptimizer.src.middleware
 {
     internal class Method
     {
-        private static int msTimeout = Const.MedMsTimeout;
+        private static int msTimeout = Const.AVG_MS_TIMEOUT;
 
         public static int MsTimeout
         {
             get => msTimeout;
-            set { msTimeout = value < Const.MinMsTimeout ? Const.MinMsTimeout : value > Const.MaxMsTimeout ? Const.MaxMsTimeout : value; }
+            set { msTimeout = value < Const.MIN_MS_TIMEOUT ? Const.MIN_MS_TIMEOUT : value > Const.MAX_MS_TIMEOUT ? Const.MAX_MS_TIMEOUT : value; }
         }
 
-        public void ResetTimeout() => msTimeout = Const.MedMsTimeout;
+        public void ResetTimeout() => msTimeout = Const.AVG_MS_TIMEOUT;
 
         public static bool Run(string? method, Table table, Main mainform)
         {
+            if (method == null || Const.METHODS.Contains(method) == false)
+                method = Const.FASTER_METHOD;
+
             List<SummaryData> data = new List<SummaryData>();
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = MsTimeout;
@@ -34,16 +37,16 @@ namespace TransportOptimizer.src.middleware
 
             timer.Tick += delegate
             {
-                if (method == Const.Methods[0]) 
+                if (method == Const.METHODS[0]) 
                     status = NorthwestCorner.Run(ref data, ref table);
 
-                else if (method == Const.Methods[1]) 
+                else if (method == Const.METHODS[1]) 
                     status = LeastCost.Run(ref data, ref table);
 
-                else if (method == Const.Methods[2])
+                else if (method == Const.METHODS[2])
                     status = VogelApprox.Run(ref data, ref table);
 
-                else if (method == Const.Methods[3]) 
+                else if (method == Const.METHODS[3]) 
                     status = RussellApprox.Run(ref data, ref table);
 
                 else
@@ -54,7 +57,7 @@ namespace TransportOptimizer.src.middleware
                     timer.Stop();
                     stopWatch.Stop();
                     var elapsed = stopWatch.ElapsedMilliseconds / 1000.00f;
-                    new Summary(data.ToArray(), "nord_ovest", table, mainform, elapsed).ShowDialog();
+                    new Summary(data.ToArray(), method.ToLower(), table, mainform, elapsed).ShowDialog();
                 }
             };
 

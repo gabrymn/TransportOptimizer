@@ -32,15 +32,15 @@ namespace TransportOptimizer.src.view
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionBackColor = Color.Black;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionForeColor = Color.Aqua;
             dgv1.BorderStyle = BorderStyle.None;
-            dgv1.Font = new Font(Const.FONT.Cells, Const.FONT.CellsSize, Const.FONT.StdForm);
-            this.Text += " (" + elapsed.ToString() + " secondi)";
+            dgv1.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);
+            this.Text += " (" + elapsed.ToString() + " seconds)";
         }
 
         private void SetSFD()
         {
             sfd = new SaveFileDialog();
-            sfd.Filter = "JSON file|*.json";
-            sfd.DefaultExt = "json";
+            sfd.Filter = Const.DEFAULT_OUTPUT_FILE_EXT_FILTER;
+            sfd.DefaultExt = Const.DEFAULT_OUTPUT_FILE_EXT;
             sfd.AddExtension = true;
             sfd.FileName = method + "_" + DateTime.UtcNow.GetHashCode().ToString().Replace("-", "");
             sfd.FileOk += CheckIfFileHasCorrectExtension;
@@ -49,11 +49,12 @@ namespace TransportOptimizer.src.view
         void CheckIfFileHasCorrectExtension(object sender, CancelEventArgs e)
         {
             SaveFileDialog sfd = (sender as SaveFileDialog);
-            if (Path.GetExtension(sfd.FileName).ToLower() != ".json")
+
+            if (Path.GetExtension(sfd.FileName).ToLower() != ("." + Const.DEFAULT_OUTPUT_FILE_EXT))
             {
                 e.Cancel = true;
                 System.Media.SystemSounds.Hand.Play();
-                MessageBox.Show("Ammessi solo file JSON, omettere l'estensione per continuare");
+                MessageBox.Show(Const.WRONG_EXT_ERROR_MSG);
                 return;
             }
         }
@@ -87,7 +88,8 @@ namespace TransportOptimizer.src.view
         {
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                SummaryData.SaveArrayToJSON(path: sfd.FileName, array: array);
+                SummaryData.ToJsonFile(path: sfd.FileName, array: array);
+
                 mainform.CallReset();
                 Close();
             }
