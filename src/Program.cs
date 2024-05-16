@@ -1,4 +1,4 @@
-namespace TransportOptimizer
+namespace TransportOptimizer.src
 {
     internal static class Program
     {
