@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-
 using TransportOptimizer.src.utils;
 using TransportOptimizer.src.model;
 
@@ -9,7 +8,7 @@ namespace TransportOptimizer
 {
     public class Temp
     {
-        private static int msTimeout = Const.MedMsTimeout;
+        /*private static int msTimeout = Const.MedMsTimeout;
 
         public static int MsTimeout
         {
@@ -22,10 +21,10 @@ namespace TransportOptimizer
         public static bool Execute(string method, Table table, Main mainform)
         {
             // No switch  case->con variabili  per versione .NET attuale
-            if (method == Const.MS[0]) NordOvest(table, mainform);
-            else if (method == Const.MS[1]) MinimiCosti(table, mainform);
-            else if (method == Const.MS[2]) Vogel(table, mainform);
-            else if (method == Const.MS[3]) Russell(table, mainform);
+            if (method == Const.Methods[0]) NordOvest(table, mainform);
+            else if (method == Const.Methods[1]) MinimiCosti(table, mainform);
+            else if (method == Const.Methods[2]) Vogel(table, mainform);
+            else if (method == Const.Methods[3]) Russell(table, mainform);
             else return false;
 
             return true;
@@ -110,7 +109,7 @@ namespace TransportOptimizer
         private static void Russell(Table table, Main mainform)
         {
             List<SummaryData> data = new List<SummaryData>();
-            Timer timer = new Timer();
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = MsTimeout;
 
             var stopWatch = new System.Diagnostics.Stopwatch();
@@ -194,7 +193,7 @@ namespace TransportOptimizer
         private static void Vogel(Table table, Main mainform)
         {
             List<SummaryData> data = new List<SummaryData>();
-            Timer timer = new Timer();
+            var timer = new System.Windows.Forms.Timer();
             timer.Interval = MsTimeout;
 
             var stopWatch = new System.Diagnostics.Stopwatch();
@@ -241,7 +240,7 @@ namespace TransportOptimizer
                         int r = -1, c = -1, q = 0;
                         if (maxC > maxR)
                         {
-                            var tlist = Const.CountVal(yline, maxC);
+                            var tlist = Utils.CountVal(yline, maxC);
                             int mindex = tlist[0];
                             if (tlist.Count > 1)
                             {
@@ -259,7 +258,7 @@ namespace TransportOptimizer
                         }
                         else
                         {
-                            var tlist = Const.CountVal(xline, maxR);
+                            var tlist = Utils.CountVal(xline, maxR);
                             int mindex = tlist[0];
                             if (tlist.Count > 1)
                             {
@@ -325,7 +324,7 @@ namespace TransportOptimizer
         private static void MinimiCosti(Table table, Main mainform)
         {
             List<SummaryData> data = new List<SummaryData>();
-            Timer timer = new Timer();
+            var timer = new System.Windows.Forms.Timer();
             timer.Interval = MsTimeout;
 
             var stopWatch = new System.Diagnostics.Stopwatch();
@@ -397,7 +396,7 @@ namespace TransportOptimizer
                 }
                 return false;
             }
-        }
+        }*/
     }
 }
 

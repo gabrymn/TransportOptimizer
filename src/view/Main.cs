@@ -7,6 +7,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.Emit;
 using TransportOptimizer.src.utils;
 using TransportOptimizer.src.model;
+using TransportOptimizer.src.middleware;
+
 
 namespace TransportOptimizer.src.view
 {
@@ -35,7 +37,7 @@ namespace TransportOptimizer.src.view
 
         public void SetMSComboBox()
         {
-            methods.Items.AddRange(Const.MS);
+            methods.Items.AddRange(Const.Methods);
             methods.Sorted = false;
             methods.SelectedItem = methods.Items[0];
         }
@@ -78,7 +80,7 @@ namespace TransportOptimizer.src.view
         {
             if (Running)
             {
-                Const.ESound();
+                System.Media.SystemSounds.Hand.Play();
                 return;
             }
 
@@ -88,7 +90,7 @@ namespace TransportOptimizer.src.view
                     if (table.RowsCount != int.Parse(textBox1.Text) || table.ColumnsCount != int.Parse(textBox2.Text))
                         table = new Table(int.Parse(textBox1.Text), int.Parse(textBox2.Text), dataGridView1, true);
             }
-            else Const.ESound();
+            else System.Media.SystemSounds.Hand.Play();
         }
 
         private void textBoxRC_TextChanged(object sender, EventArgs e)
@@ -108,7 +110,7 @@ namespace TransportOptimizer.src.view
         {
             if (Running)
             {
-                Const.ESound();
+                System.Media.SystemSounds.Hand.Play();
                 return;
             }
 
@@ -116,26 +118,27 @@ namespace TransportOptimizer.src.view
             {
                 var min = int.Parse(tbMinVal.Text);
                 var max = int.Parse(tbMaxVal.Text);
+
                 if (min <= max)
                     table.Randomize(min, max);
                 else
                 {
-                    Const.ESound();
+                    System.Media.SystemSounds.Hand.Play();
                     var a = tbMinVal.Text;
                     var b = tbMaxVal.Text;
-                    Const.Swap<string>(ref a, ref b);
+                    Utils.Swap<string>(ref a, ref b);
                     tbMinVal.Text = a;
                     tbMaxVal.Text = b;
                 }
             }
-            else Const.ESound();
+            else System.Media.SystemSounds.Hand.Play();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             if (Running)
             {
-                Const.ESound();
+                System.Media.SystemSounds.Hand.Play();
                 return;
             }
             table.Clear();
@@ -155,19 +158,19 @@ namespace TransportOptimizer.src.view
         {
             if (Running)
             {
-                Const.ESound();
+                System.Media.SystemSounds.Hand.Play();
                 return;
             }
 
             if (table.Full == false)
             {
-                Const.ESound();
-                Const.ShowMsg("L'esecuzione di questa funzione richiede che\ntutte le celle della tabella siano compilate");
+                System.Media.SystemSounds.Hand.Play();
+                MessageBox.Show("L'esecuzione di questa funzione richiede che\ntutte le celle della tabella siano compilate");
             }
             else if (table.ControlStart() == false)
             {
-                Const.ESound();
-                Const.ShowMsg("Controllare dati ultima riga e ultima colonna");
+                System.Media.SystemSounds.Hand.Play();
+                MessageBox.Show("Controllare dati ultima riga e ultima colonna");
             }
             else
             {
@@ -175,7 +178,8 @@ namespace TransportOptimizer.src.view
                 table.ReadOnly(true);
                 Buffer = Tuple.Create(table.RowsCount, table.ColumnsCount, table.GetData());
                 string method = methods.SelectedItem.ToString();
-                InvokeUpdateControls(() => ORS.Execute(method, table, this));
+
+                InvokeUpdateControls(() => middleware.Method.Run(method, table, this));
             }
         }
 
@@ -191,7 +195,7 @@ namespace TransportOptimizer.src.view
             }
             catch (Exception e)
             {
-                Const.ShowMsg("A causa di un errore i tuoi dati sono stati persi :(");
+                MessageBox.Show("A causa di un errore i tuoi dati sono stati persi :(");
                 Console.WriteLine(e);
                 table = new Table(15, 15, dataGridView1, true);
             }
@@ -213,7 +217,7 @@ namespace TransportOptimizer.src.view
         {
             if (Running)
             {
-                Const.ESound();
+                System.Media.SystemSounds.Hand.Play();
                 return;
             }
 

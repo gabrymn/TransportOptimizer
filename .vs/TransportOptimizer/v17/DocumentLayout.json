@@ -3,60 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\view\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\view\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\middleware\\method.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\middleware\\method.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\view\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\view\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\leastcost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\algo\\leastcost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\algo\\temp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\algo\\temp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\algo\\vogelapprox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\algo\\vogelapprox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\algo\\russell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\algo\\russell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\view\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\view\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\model\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\model\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\utils\\myjson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\utils\\myjson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\utils\\const.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\utils\\const.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\model\\summarydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\model\\summarydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\view\\loading.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\view\\loading.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\src\\view\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:src\\view\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|c:\\users\\claudia\\desktop\\transportoptimizer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5521C46D-AADC-4A49-8058-CB30DB72C8CF}|TransportOptimizer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,32 +22,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Summary.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Summary.cs",
-              "RelativeDocumentMoniker": "src\\view\\Summary.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Summary.cs",
-              "RelativeToolTip": "src\\view\\Summary.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:24:03.315Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Summary.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Summary.cs",
-              "RelativeDocumentMoniker": "src\\view\\Summary.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Summary.cs [Progettazione]",
-              "RelativeToolTip": "src\\view\\Summary.cs [Progettazione]",
+              "DocumentIndex": 0,
+              "Title": "Method.cs",
+              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\middleware\\Method.cs",
+              "RelativeDocumentMoniker": "src\\middleware\\Method.cs",
+              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\middleware\\Method.cs",
+              "RelativeToolTip": "src\\middleware\\Method.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:23:37.282Z",
-              "EditorCaption": " [Progettazione]"
+              "WhenOpened": "2024-05-16T09:46:57.115Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -101,156 +49,22 @@
               "RelativeDocumentMoniker": "src\\algo\\Temp.cs",
               "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\Temp.cs",
               "RelativeToolTip": "src\\algo\\Temp.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAIwDAAAAARAAAA",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAQwNMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:19:35Z",
+              "WhenOpened": "2024-05-16T09:37:19.734Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "VogelApprox.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\VogelApprox.cs",
-              "RelativeDocumentMoniker": "src\\algo\\VogelApprox.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\VogelApprox.cs",
-              "RelativeToolTip": "src\\algo\\VogelApprox.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "LeastCost.cs",
+              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\LeastCost.cs",
+              "RelativeDocumentMoniker": "src\\algo\\LeastCost.cs",
+              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\LeastCost.cs",
+              "RelativeToolTip": "src\\algo\\LeastCost.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:18:54.349Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Russell.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\Russell.cs",
-              "RelativeDocumentMoniker": "src\\algo\\Russell.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\algo\\Russell.cs",
-              "RelativeToolTip": "src\\algo\\Russell.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:15:36.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Utils.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\utils\\Utils.cs",
-              "RelativeDocumentMoniker": "src\\utils\\Utils.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\utils\\Utils.cs",
-              "RelativeToolTip": "src\\utils\\Utils.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:12:02.846Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SummaryData.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\model\\SummaryData.cs",
-              "RelativeDocumentMoniker": "src\\model\\SummaryData.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\model\\SummaryData.cs",
-              "RelativeToolTip": "src\\model\\SummaryData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:12:11.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MyJson.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\utils\\MyJson.cs",
-              "RelativeDocumentMoniker": "src\\utils\\MyJson.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\utils\\MyJson.cs",
-              "RelativeToolTip": "src\\utils\\MyJson.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAowDYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:07:40.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Table.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\model\\Table.cs",
-              "RelativeDocumentMoniker": "src\\model\\Table.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\model\\Table.cs",
-              "RelativeToolTip": "src\\model\\Table.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:05:04.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Const.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\utils\\Const.cs",
-              "RelativeDocumentMoniker": "src\\utils\\Const.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\utils\\Const.cs",
-              "RelativeToolTip": "src\\utils\\Const.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T18:55:12.637Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Loading.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Loading.cs",
-              "RelativeDocumentMoniker": "src\\view\\Loading.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Loading.cs",
-              "RelativeToolTip": "src\\view\\Loading.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAIwC4AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T18:45:51.544Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Loading.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Loading.Designer.cs",
-              "RelativeDocumentMoniker": "src\\view\\Loading.Designer.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Loading.Designer.cs",
-              "RelativeToolTip": "src\\view\\Loading.Designer.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAowFQAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T18:46:58.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Main.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Main.Designer.cs",
-              "RelativeDocumentMoniker": "src\\view\\Main.Designer.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\src\\view\\Main.Designer.cs",
-              "RelativeToolTip": "src\\view\\Main.Designer.cs",
-              "ViewState": "AQIAAIkBAAAAAAAAAAAAAJkBAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T19:01:51.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\CLAUDIA\\Desktop\\TransportOptimizer\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T18:42:49.962Z",
+              "WhenOpened": "2024-05-16T09:35:12.914Z",
               "EditorCaption": ""
             }
           ]

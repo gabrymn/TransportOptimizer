@@ -6,6 +6,8 @@ namespace TransportOptimizer.src.utils
 {
     public static class Utils
     {
+        private static Random rng = new Random();
+
         public static bool IsN(string str)
         {
             return int.TryParse(str, out _);
@@ -46,6 +48,38 @@ namespace TransportOptimizer.src.utils
         public static bool SkipCheck(string s1, string s2, string[] array)
         {
             return array.Contains(s1) || array.Contains(s2);
+        }
+
+        public static void Shuffle<T>(IList<T> list)
+        {
+            int n = list.Count;
+
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+
+        public static List<int> CountVal(int[] array, int value)
+        {
+            var list = new List<int>();
+
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] == value)
+                    list.Add(i);
+
+            return list;
+        }
+
+        public static void Swap<T>(ref T v1, ref T v2)
+        {
+            T t = v2;
+            v2 = v1;
+            v1 = t;
         }
     }
 }

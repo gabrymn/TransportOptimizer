@@ -52,8 +52,8 @@ namespace TransportOptimizer.src.view
             if (Path.GetExtension(sfd.FileName).ToLower() != ".json")
             {
                 e.Cancel = true;
-                Const.ESound();
-                Const.ShowMsg("Ammessi solo file JSON, omettere l'estensione per continuare");
+                System.Media.SystemSounds.Hand.Play();
+                MessageBox.Show("Ammessi solo file JSON, omettere l'estensione per continuare");
                 return;
             }
         }

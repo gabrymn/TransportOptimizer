@@ -215,7 +215,7 @@ namespace TransportOptimizer.src.model
 
                 if ((t != string.Empty && !Utils.IsN(t)) || Utils.LessT1(t) || t.StartsWith("0"))
                 {
-                    Const.ESound();
+                    System.Media.SystemSounds.Hand.Play();
                     view.CurrentCell.Value = string.Empty;
                 }
                 else
@@ -318,7 +318,7 @@ namespace TransportOptimizer.src.model
                         }
                     }
 
-                    Const.Shuffle(array);
+                    Utils.Shuffle(array);
                 }
             }
             catch (Exception e) { Console.WriteLine(e); }
