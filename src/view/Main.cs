@@ -88,7 +88,8 @@ namespace TransportOptimizer.src.view
                     if (table.RowsCount != int.Parse(textBox1.Text) || table.ColumnsCount != int.Parse(textBox2.Text))
                         table = new Table(int.Parse(textBox1.Text), int.Parse(textBox2.Text), dataGridView1, true);
             }
-            else System.Media.SystemSounds.Hand.Play();
+            else 
+                System.Media.SystemSounds.Hand.Play();
         }
 
         private void textBoxRC_TextChanged(object sender, EventArgs e)
@@ -142,10 +143,11 @@ namespace TransportOptimizer.src.view
             table.Clear();
         }
 
+        /// <summary>
+        ///  Controlla che un thread non abbia accesso a una risorsa di cui non è il creatore
+        /// </summary>
         public void InvokeUpdateControls(Action action)
         {
-            // Controlla che un thread non abbia accesso a una risorsa di cui non è il creatore
-
             if (InvokeRequired)
                 Invoke(new UpdateControlsDelegate(action));
             else

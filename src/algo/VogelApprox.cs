@@ -31,31 +31,42 @@ namespace TransportOptimizer.src.algo
                         xline[i] = table.DeltaM(Const.COLUMN.ToUpper(), i);
 
                     int maxR = xline[0];
+
                     for (int i = 1; i < xline.Length; i++)
                         if (xline[i] > maxR)
                             maxR = xline[i];
 
                     int maxC = yline[0];
+
                     for (int i = 1; i < yline.Length; i++)
                         if (yline[i] > maxC)
                             maxC = yline[i];
 
                     int r = -1, c = -1, q = 0;
+
                     if (maxC > maxR)
                     {
                         var tlist = Utils.CountVal(yline, maxC);
                         int mindex = tlist[0];
+
                         if (tlist.Count > 1)
                         {
                             mindex = table.XLineMin(tlist[0]);
+
                             for (int i = 1; i < tlist.Count; i++)
                             {
                                 var t = table.XLineMin(tlist[i]);
-                                if (t < mindex) { mindex = t; q = i; }
+                                if (t < mindex) 
+                                { 
+                                    mindex = t; 
+                                    q = i; 
+                                }
                             }
+
                             r = tlist[q];
                             c = table.XLineIndex(r, mindex);
                         }
+
                         r = tlist[0];
                         c = table.XLineIndex(r, table.XLineMin(r));
                     }
@@ -63,30 +74,39 @@ namespace TransportOptimizer.src.algo
                     {
                         var tlist = Utils.CountVal(xline, maxR);
                         int mindex = tlist[0];
+
                         if (tlist.Count > 1)
                         {
                             mindex = table.YLineMin(tlist[0]);
+
                             for (int i = 1; i < tlist.Count; i++)
                             {
                                 var t = table.YLineMin(tlist[i]);
-                                if (t < mindex) { mindex = t; q = i; }
+
+                                if (t < mindex) 
+                                { 
+                                    mindex = t; 
+                                    q = i; 
+                                }
                             }
+
                             r = tlist[q];
                             c = table.YLineIndex(r, mindex);
                         }
+
                         c = tlist[0];
                         r = table.YLineIndex(c, table.YLineMin(c));
                     }
 
                     int val_r = table.GetAt(r, table.ColumnsCount);
                     int val_c = table.GetAt(table.RowsCount, c);
-                    bool removeColumn = false;
+                    bool remove_column = false;
 
                     if (val_c < val_r)
                     {
                         obj.Quantity = val_c;
                         obj.Price = obj.Quantity * table.GetAt(r, c);
-                        removeColumn = true;
+                        remove_column = true;
                         table.SetAt(r, table.ColumnsCount, val_r - val_c);
                         table.SetLastXY(table.YLineSummary(table.ColumnsCount));
                     }
@@ -99,8 +119,12 @@ namespace TransportOptimizer.src.algo
                     }
 
                     obj.FromTo = table.GetHeaderRowAt(r) + " - " + table.GetHeaderColumnAt(c);
-                    if (removeColumn) table.RemoveColumnAt(c);
-                    else table.RemoveRowAt(r);
+                    
+                    if (remove_column) 
+                        table.RemoveColumnAt(c);
+                    else 
+                        table.RemoveRowAt(r);
+
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
                 }
@@ -113,9 +137,18 @@ namespace TransportOptimizer.src.algo
                     obj.FromTo = table.GetHeaderRowAt(0) + " - " + table.GetHeaderColumnAt(0);
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
-                    SummaryData sum = new SummaryData(Const.ATTR_TOTAL_NAME, SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), null, SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME));
+
+                    var sum = new SummaryData
+                    (
+                        Const.ATTR_TOTAL_NAME, 
+                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        null, 
+                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                    );
                     list.Add(sum);
+                    
                     table.VisibleStatus(false);
+                    
                     return false;
                 }
                 return true;

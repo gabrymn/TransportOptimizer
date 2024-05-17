@@ -19,10 +19,30 @@ namespace TransportOptimizer.src.model
         public int CellsCount { get => rowsCount * columnsCount; }
         public bool Full { get => IsFull(); }
         public void Clear() => Iterate(string.Empty);
-        public int RealHeight { get { int s = 0; view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => s += row.Height); s += view.ColumnHeadersHeight; return s; } }
-        public int RealWidth { get { int s = 0; view.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => s += column.Width); s += view.ColumnHeadersHeight; return s; } }
         public DataGridView View { get => view; }
         public Cell Min { get => GetMin(); }
+
+        public int RealHeight 
+        { 
+            get 
+            { 
+                int s = 0; 
+                view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => s += row.Height); 
+                s += view.ColumnHeadersHeight; 
+                return s; 
+            } 
+        }
+
+        public int RealWidth
+        {
+            get
+            {
+                int s = 0;
+                view.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => s += column.Width);
+                s += view.ColumnHeadersHeight;
+                return s;
+            }
+        }
 
         public struct Cell
         {
@@ -54,12 +74,12 @@ namespace TransportOptimizer.src.model
         {
             SetDataGridViewProperties();
             SetVisualElements();
-            //setStdData();
+            //setDefaultData();
         }
 
-        public void setStdData()
+        public void setDefaultData()
         {
-            int[,] m = new int[,]
+            int[,] default_data = new int[,]
             {
                 { 10, 12, 80, 30, 50, 200 },
                 { 15, 30, 40, 45, 60, 150 },
@@ -69,7 +89,7 @@ namespace TransportOptimizer.src.model
 
             for (int i = 0; i < rowsCount + 1; i++)
                 for (int j = 0; j < columnsCount + 1; j++)
-                    SetAt(i, j, m[i, j]);
+                    SetAt(i, j, default_data[i, j]);
         }
 
         public bool RemoveRowAt(int index)
@@ -77,6 +97,7 @@ namespace TransportOptimizer.src.model
             try
             {
                 bool state = false;
+
                 if (index < rowsCount)
                 {
                     view.Rows.RemoveAt(index);
@@ -86,18 +107,24 @@ namespace TransportOptimizer.src.model
                 }
                 return state;
             }
-            catch (Exception e) { Console.WriteLine(e); return false; }
+            catch (Exception e) 
+            { 
+                Console.WriteLine(e); 
+                return false; 
+            }
 
         }
 
         public void RemoveLastColumn()
         {
-            try { view.Columns.RemoveAt(--columnsCount); } catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
+            try { view.Columns.RemoveAt(--columnsCount); } 
+            catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
         }
 
         public void RemoveLastRow()
         {
-            try { view.Rows.RemoveAt(--rowsCount); } catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
+            try { view.Rows.RemoveAt(--rowsCount); } 
+            catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
         }
 
         public bool RemoveColumnAt(int index)
@@ -105,6 +132,7 @@ namespace TransportOptimizer.src.model
             try
             {
                 bool state = false;
+
                 if (index < columnsCount)
                 {
                     view.Columns.RemoveAt(index);
@@ -114,18 +142,27 @@ namespace TransportOptimizer.src.model
                 }
                 return state;
             }
-            catch (Exception e) { Console.WriteLine(e); return false; }
+            catch (Exception e) 
+            { 
+                Console.WriteLine(e); 
+                return false; 
+            }
         }
 
         private void SetBackground()
         {
-            view.Rows.Cast<DataGridViewRow>().ToList().ForEach(r => { r.Cells[columnsCount].Style.ForeColor = Color.Aqua; });
-            view.Rows[rowsCount].Cells.Cast<DataGridViewCell>().ToList().ForEach(c => { c.Style.ForeColor = Color.Aqua; });
+            view.Rows.Cast<DataGridViewRow>().ToList().ForEach(r => 
+                { r.Cells[columnsCount].Style.ForeColor = Color.Aqua; }
+            );
+            
+            view.Rows[rowsCount].Cells.Cast<DataGridViewCell>().ToList().ForEach(c => 
+                { c.Style.ForeColor = Color.Aqua; }
+            );
         }
 
         private void SetVisualElements()
         {
-            SetStructTable();
+            SetTableStruct();
             SetHeaders(Const.ATTR_UNIT_PROD, Const.ATTR_DEST, Const.ATTR_TOTAL_NAME);
             Iterate(value: string.Empty);
             SetBackground();
@@ -138,10 +175,12 @@ namespace TransportOptimizer.src.model
             try
             {
                 view.ColumnHeadersHeight = heightCells;
+
                 for (int i = 0; i <= rowsCount; i++)
                     view.Rows[i].Height = heightCells;
 
                 view.RowHeadersWidth = widthCells;
+
                 for (int i = 0; i <= columnsCount; i++)
                     view.Columns[i].Width = widthCells;
             }
@@ -158,8 +197,16 @@ namespace TransportOptimizer.src.model
 
         private void SetHeaders(string keyRow, string keyColumn, string keyLast)
         {
-            view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => row.HeaderCell.Value = keyRow + (row.Index + 1));
-            view.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => { column.HeaderText = keyColumn + (column.Index + 1); column.SortMode = DataGridViewColumnSortMode.NotSortable; column.HeaderCell.Style.BackColor = Color.FromArgb(15, 16, 18); });
+            view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => 
+                row.HeaderCell.Value = keyRow + (row.Index + 1)
+            );
+
+            view.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => 
+            {   
+                column.HeaderText = keyColumn + (column.Index + 1); 
+                column.SortMode = DataGridViewColumnSortMode.NotSortable; 
+                column.HeaderCell.Style.BackColor = Color.FromArgb(15, 16, 18); 
+            });
 
             view.Rows[rowsCount].HeaderCell.Value = keyLast;
             view.Rows[rowsCount].HeaderCell.Style.ForeColor = Color.Aqua;
@@ -173,7 +220,7 @@ namespace TransportOptimizer.src.model
             view.Columns[columnsCount].HeaderCell.Style.BackColor = Color.Black;
         }
 
-        private void SetStructTable()
+        private void SetTableStruct()
         {
             try
             {
@@ -194,14 +241,23 @@ namespace TransportOptimizer.src.model
         {
             try
             {
-
                 max++;
                 view.Rows.Cast<DataGridViewRow>().ToList().ForEach(r => r.Cells.Cast<DataGridViewCell>().ToList().ForEach(c => c.Value = rd.Next(min, max)));
-                for (int i = 0; i < columnsCount; i++) view.Rows[rowsCount].Cells[i].Value = 0;
-                for (int i = 0; i < rowsCount; i++) view.Rows[i].Cells[columnsCount].Value = 0;
+                
+                for (int i = 0; i < columnsCount; i++) 
+                    view.Rows[rowsCount].Cells[i].Value = 0;
+
+                for (int i = 0; i < rowsCount; i++) 
+                    view.Rows[i].Cells[columnsCount].Value = 0;
 
                 int x = Math.Max(RowsCount, ColumnsCount) > 9 ? 10 : 1;
-                GenerateTotalsRand(new int[ColumnsCount], new int[RowsCount], Math.Max(RowsCount, ColumnsCount) * 100 + (rd.Next(1, 10) * (10 * x)));
+
+                GenerateTotalsRand
+                (
+                    new int[ColumnsCount], 
+                    new int[RowsCount], 
+                    Math.Max(RowsCount, ColumnsCount) * 100 + (rd.Next(1, 10) * (10 * x))
+                );
 
             }
             catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
@@ -219,8 +275,11 @@ namespace TransportOptimizer.src.model
                     view.CurrentCell.Value = string.Empty;
                 }
                 else
-                if (t.StartsWith(" ") || t.EndsWith(" "))
-                    view.CurrentCell.Value = t.Trim();
+                {
+                    if (t.StartsWith(" ") || t.EndsWith(" "))
+                        view.CurrentCell.Value = t.Trim();
+                }
+
             }
             catch (Exception e) { Console.WriteLine(e); }
         }
@@ -229,7 +288,11 @@ namespace TransportOptimizer.src.model
         {
             try
             {
-                view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => row.Cells.Cast<DataGridViewCell>().ToList().ForEach(cell => cell.Value = value));
+                view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => 
+                    row.Cells.Cast<DataGridViewCell>().ToList().ForEach(cell => 
+                        cell.Value = value
+                    )
+                );
             }
             catch (Exception e) { Console.WriteLine(e); }
         }
@@ -243,7 +306,11 @@ namespace TransportOptimizer.src.model
 
                 return ret ? int.Parse(value) : -1;
             }
-            catch (IndexOutOfRangeException e) { Console.WriteLine(e.ToString()); return default; }
+            catch (IndexOutOfRangeException e) 
+            { 
+                Console.WriteLine(e.ToString()); 
+                return default; 
+            }
         }
 
         public void SetAt(int indexRow, int indexColumn, int value)
@@ -296,9 +363,11 @@ namespace TransportOptimizer.src.model
                     int med = last / array.Length;
                     int[] m = Enumerable.Repeat(med, array.Length).ToArray();
 
-                    while (m.Sum() < last) m[m.Length - 1]++;
+                    while (m.Sum() < last) 
+                        m[m.Length - 1]++;
 
                     int k = -1;
+
                     for (int i = 0; i < array.Length; i++)
                     {
                         if (i == (array.Length - 1))
@@ -330,8 +399,10 @@ namespace TransportOptimizer.src.model
             {
                 int x1 = 0;
                 int x2 = GetLastXY();
+
                 for (int i = 0; i < view.Columns.Count; i++)
                     x1 += Convert.ToInt32(view.Rows[index].Cells[i].Value);
+
                 return x1 - x2;
             }
             catch (Exception e) { Console.WriteLine(e); return -1; }
@@ -340,43 +411,56 @@ namespace TransportOptimizer.src.model
         public int XLineMax(int rowIndex)
         {
             int tmax = Convert.ToInt32(view.Rows[rowIndex].Cells[0].Value);
+
             for (int i = 1; i < view.Columns.Count - 1; i++)
             {
                 int v = Convert.ToInt32(view.Rows[rowIndex].Cells[i].Value);
                 if (v > tmax) tmax = v;
             }
+
             return tmax;
         }
 
         public int XLineMin(int rowIndex)
         {
             int tmin = Convert.ToInt32(view.Rows[rowIndex].Cells[0].Value);
+
             for (int i = 1; i < view.Columns.Count - 1; i++)
             {
                 int v = Convert.ToInt32(view.Rows[rowIndex].Cells[i].Value);
-                if (v < tmin) tmin = v;
+
+                if (v < tmin) 
+                    tmin = v;
             }
+
             return tmin;
         }
 
         public int YLineMax(int columnIndex)
         {
             int tmax = Convert.ToInt32(view.Rows[0].Cells[columnIndex].Value);
+
             for (int i = 1; i < view.Rows.Count - 1; i++)
             {
                 int v = Convert.ToInt32(view.Rows[i].Cells[columnIndex].Value);
-                if (v > tmax) tmax = v;
+
+                if (v > tmax) 
+                    tmax = v;
             }
+
             return tmax;
         }
 
         public int YLineMin(int columnIndex)
         {
             int tmin = Convert.ToInt32(view.Rows[0].Cells[columnIndex].Value);
+
             for (int i = 1; i < view.Rows.Count - 1; i++)
             {
                 int v = Convert.ToInt32(view.Rows[i].Cells[columnIndex].Value);
-                if (v < tmin) tmin = v;
+
+                if (v < tmin) 
+                    tmin = v;
             }
             return tmin;
         }
@@ -386,8 +470,11 @@ namespace TransportOptimizer.src.model
             for (int i = 0; i < view.Columns.Count; i++)
             {
                 int v = Convert.ToInt32(view.Rows[rowIndex].Cells[i].Value);
-                if (v == value) return i;
+
+                if (v == value) 
+                    return i;
             }
+
             return -1;
         }
 
@@ -396,8 +483,11 @@ namespace TransportOptimizer.src.model
             for (int i = 0; i < view.Rows.Count; i++)
             {
                 int v = Convert.ToInt32(view.Rows[i].Cells[columnIndex].Value);
-                if (v == value) return i;
+                
+                if (v == value) 
+                    return i;
             }
+
             return -1;
         }
 
@@ -407,11 +497,17 @@ namespace TransportOptimizer.src.model
             {
                 int y1 = 0;
                 int y2 = GetLastXY();
+
                 for (int i = 0; i < view.Rows.Count; i++)
                     y1 += Convert.ToInt32(view.Rows[i].Cells[index].Value);
+
                 return y1 - y2;
             }
-            catch (Exception e) { Console.WriteLine(e); return -1; }
+            catch (Exception e) 
+            { 
+                Console.WriteLine(e); 
+                return -1; 
+            }
         }
 
         public int[,] GetData()
@@ -419,12 +515,18 @@ namespace TransportOptimizer.src.model
             try
             {
                 int[,] m = new int[rowsCount + 1, columnsCount + 1];
+
                 for (int i = 0; i <= rowsCount; i++)
                     for (int j = 0; j <= columnsCount; j++)
                         m[i, j] = Convert.ToInt32(view.Rows[i].Cells[j].Value);
+
                 return m;
             }
-            catch (Exception e) { Console.WriteLine(e); return default; }
+            catch (Exception e) 
+            { 
+                Console.WriteLine(e); 
+                return default; 
+            }
         }
 
         public void SetData(int[,] m)
@@ -454,10 +556,16 @@ namespace TransportOptimizer.src.model
             {
                 for (int i = 0; i < view.Rows.Count; i++)
                     for (int j = 0; j < view.Columns.Count; j++)
-                        if (view.Rows[i].Cells[j].Value.ToString().Length == 0) return false;
+                        if (view.Rows[i].Cells[j].Value.ToString().Length == 0) 
+                            return false;
+
                 return true;
             }
-            catch (Exception e) { Console.WriteLine(e); return false; }
+            catch (Exception e) 
+            { 
+                Console.WriteLine(e); 
+                return false; 
+            }
         }
 
         private Cell GetMin()
@@ -477,6 +585,7 @@ namespace TransportOptimizer.src.model
                             min.R = i;
                             min.C = j;
                         }
+
                 return min;
             }
             catch (Exception e) { Console.WriteLine(e); return default; }
@@ -499,6 +608,7 @@ namespace TransportOptimizer.src.model
                             min.R = i;
                             min.C = j;
                         }
+
                 return min;
             }
             catch (Exception e) { Console.WriteLine(e); return default; }
@@ -511,7 +621,10 @@ namespace TransportOptimizer.src.model
 
         public bool ControlStart()
         {
-            return XLineSummary(rowsCount) == YLineSummary(columnsCount) && YLineSummary(columnsCount) == GetLastXY();
+            bool eq1 = XLineSummary(rowsCount) == YLineSummary(columnsCount);
+            bool eq2 = YLineSummary(columnsCount) == GetLastXY();
+
+            return eq1 && eq2;
         }
 
         public int DeltaM(string rc, int index)
@@ -521,19 +634,27 @@ namespace TransportOptimizer.src.model
             if (rc == Const.ROW)
             {
                 int min1 = 0;
+
                 for (int i = 1; i < ColumnsCount; i++)
                 {
                     int v = Convert.ToInt32(view.Rows[index].Cells[i].Value);
                     int min1V = Convert.ToInt32(view.Rows[index].Cells[min1].Value);
-                    if (v < min1V) min1 = i;
+
+                    if (v < min1V) 
+                        min1 = i;
                 }
+
                 int min2 = min1 == 0 ? 1 : 0;
+
                 for (int i = 0; i < ColumnsCount; i++)
                 {
                     int v = Convert.ToInt32(view.Rows[index].Cells[i].Value);
                     int min2V = Convert.ToInt32(view.Rows[index].Cells[min2].Value);
-                    if (v < min2V && i != min1) min2 = i;
+                    
+                    if (v < min2V && i != min1) 
+                        min2 = i;
                 }
+
                 return Math.Abs(
                     Convert.ToInt32(view.Rows[index].Cells[min1].Value)
                     -
@@ -544,19 +665,25 @@ namespace TransportOptimizer.src.model
             if (rc == Const.COLUMN)
             {
                 int min1 = 0;
+
                 for (int i = 1; i < RowsCount; i++)
                 {
                     int v = Convert.ToInt32(view.Rows[i].Cells[index].Value);
                     int min1V = Convert.ToInt32(view.Rows[min1].Cells[index].Value);
                     if (v < min1V) min1 = i;
                 }
+
                 int min2 = min1 == 0 ? 1 : 0;
+
                 for (int i = 0; i < RowsCount; i++)
                 {
                     int v = Convert.ToInt32(view.Rows[i].Cells[index].Value);
                     int min2V = Convert.ToInt32(view.Rows[min2].Cells[index].Value);
-                    if (v < min2V && i != min1) min2 = i;
+                    
+                    if (v < min2V && i != min1) 
+                        min2 = i;
                 }
+
                 return Math.Abs(
                     Convert.ToInt32(view.Rows[min1].Cells[index].Value)
                     -

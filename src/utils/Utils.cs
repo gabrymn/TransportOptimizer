@@ -26,10 +26,14 @@ namespace TransportOptimizer.src.utils
         public static string RemoveChar(string str)
         {
             string s = string.Empty;
+
             for (int i = 0; i < str.Length; i++)
             {
-                if (i == 0 && str[0] == '0') continue;
-                if (IsN(str[i].ToString())) s += str[i].ToString();
+                if (i == 0 && str[0] == '0') 
+                    continue;
+
+                if (IsN(str[i].ToString())) 
+                    s += str[i].ToString();
             }
 
             return s;
@@ -47,7 +51,7 @@ namespace TransportOptimizer.src.utils
 
         public static bool SkipCheck(string s1, string s2, string[] array)
         {
-            return array.Contains(s1) || array.Contains(s2);
+            return (array.Contains(s1) || array.Contains(s2));
         }
 
         public static void Shuffle<T>(IList<T> list)
@@ -82,6 +86,9 @@ namespace TransportOptimizer.src.utils
             v1 = t;
         }
 
+        /// <summary>
+        ///  Equals Ignore Case
+        /// </summary>
         public static bool EqualsICase(string str1, string str2)
         {
             if (str1 == null || str2 == null)

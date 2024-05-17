@@ -46,9 +46,6 @@ namespace TransportOptimizer.src.middleware
                 else if (method == Const.METHODS[2])
                     status = VogelApprox.Run(ref data, ref table);
 
-                else if (method == Const.METHODS[3]) 
-                    status = RussellApprox.Run(ref data, ref table);
-
                 else
                     status = RussellApprox.Run(ref data, ref table);
 

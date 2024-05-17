@@ -58,7 +58,8 @@ namespace TransportOptimizer.src.model
             if (str.Length < 4) 
                 return str;
             
-            StringBuilder price = new StringBuilder(value.ToString());
+            var price = new StringBuilder(value.ToString());
+
             int serie = price.Length - 3;
             int p = price.Length - 1;
 
@@ -69,7 +70,9 @@ namespace TransportOptimizer.src.model
                     price.Insert(serie, '.');
                     serie = serie - 3;
                 }
+
                 p--;
+            
             } while (p > -1);
 
             return price.ToString();

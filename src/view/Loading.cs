@@ -24,7 +24,8 @@ namespace TransportOptimizer.src.view
         {
             if (InvokeRequired)
                 Invoke(new CloseDelegate(action));
-            else action();
+            else 
+                action();
         }
 
         private void Loading_Load(object sender, EventArgs e)
@@ -44,8 +45,10 @@ namespace TransportOptimizer.src.view
                     timer.Stop();
                     InvokeControls(Hide);
                     
-                    try { 
+                    try 
+                    { 
                         new Main().ShowDialog(); 
+
                     } catch (ThreadStateException e) 
                     { 
                         Console.WriteLine(e); 

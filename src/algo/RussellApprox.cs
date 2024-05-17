@@ -27,22 +27,35 @@ namespace TransportOptimizer.src.algo
                 if (table.RowsCount > 1 || table.ColumnsCount > 1)
                 {
                     vm = new int[table.RowsCount, table.ColumnsCount];
+
                     maxrs = new int[table.RowsCount];
                     maxcs = new int[table.ColumnsCount];
-                    for (int i = 0; i < table.RowsCount; i++) maxrs[i] = table.XLineMax(i);
-                    for (int i = 0; i < table.ColumnsCount; i++) maxcs[i] = table.YLineMax(i);
-                    for (int i = 0; i < vm.GetLength(0); i++) for (int j = 0; j < vm.GetLength(1); j++) vm[i, j] = table.GetAt(i, j) - maxcs[j];
-                    for (int i = 0; i < vm.GetLength(1); i++) for (int j = 0; j < vm.GetLength(0); j++) vm[j, i] -= maxrs[j];
+
+                    for (int i = 0; i < table.RowsCount; i++) 
+                        maxrs[i] = table.XLineMax(i);
+
+                    for (int i = 0; i < table.ColumnsCount; i++) 
+                        maxcs[i] = table.YLineMax(i);
+
+                    for (int i = 0; i < vm.GetLength(0); i++) 
+                        for (int j = 0; j < vm.GetLength(1); j++) 
+                            vm[i, j] = table.GetAt(i, j) - maxcs[j];
+
+                    for (int i = 0; i < vm.GetLength(1); i++) 
+                        for (int j = 0; j < vm.GetLength(0); j++) 
+                            vm[j, i] -= maxrs[j];
+
                     var min = Table.GetMin(vm);
                     int val_r = table.GetAt(min.R, table.ColumnsCount);
                     int val_c = table.GetAt(table.RowsCount, min.C);
-                    bool removeColumn = false;
+
+                    bool remove_column = false;
 
                     if (val_c < val_r)
                     {
                         obj.Quantity = val_c;
                         obj.Price = obj.Quantity * table.GetAt(min.R, min.C);
-                        removeColumn = true;
+                        remove_column = true;
                         table.SetAt(min.R, table.ColumnsCount, val_r - val_c);
                         table.SetLastXY(table.YLineSummary(table.ColumnsCount));
                     }
@@ -55,8 +68,12 @@ namespace TransportOptimizer.src.algo
                     }
 
                     obj.FromTo = table.GetHeaderRowAt(min.R) + " - " + table.GetHeaderColumnAt(min.C);
-                    if (removeColumn) table.RemoveColumnAt(min.C);
-                    else table.RemoveRowAt(min.R);
+
+                    if (remove_column) 
+                        table.RemoveColumnAt(min.C);
+                    else 
+                        table.RemoveRowAt(min.R);
+                    
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
                 }
@@ -68,10 +85,21 @@ namespace TransportOptimizer.src.algo
                     obj.Price = obj.Quantity * table.GetAt(0, 0);
                     obj.FromTo = table.GetHeaderRowAt(0) + " - " + table.GetHeaderColumnAt(0);
                     obj.ID = (list.Count + 1).ToString();
+
                     list.Add(obj);
-                    SummaryData sum = new SummaryData(Const.ATTR_TOTAL_NAME, SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), null, SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME));
+
+                    var sum = new SummaryData
+                    (
+                        Const.ATTR_TOTAL_NAME, 
+                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        null, 
+                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                    );
+
                     list.Add(sum);
+                    
                     table.VisibleStatus(false);
+
                     return false;
                 }
                 return true;

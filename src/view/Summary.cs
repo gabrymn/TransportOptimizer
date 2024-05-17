@@ -26,13 +26,19 @@ namespace TransportOptimizer.src.view
             SetSFD();
             this.array = array;
             Table.AddRows(dgv1, array.Length);
-            dgv1.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => { column.SortMode = DataGridViewColumnSortMode.NotSortable; });
+            
+            dgv1.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => { 
+                column.SortMode = DataGridViewColumnSortMode.NotSortable; 
+            });
+            
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Aqua;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.ForeColor = Color.Black;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionBackColor = Color.Black;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionForeColor = Color.Aqua;
             dgv1.BorderStyle = BorderStyle.None;
+
             dgv1.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);
+
             this.Text += " (" + elapsed.ToString() + " seconds)";
         }
 
@@ -61,7 +67,9 @@ namespace TransportOptimizer.src.view
 
         private void Final_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgv1.Rows.Count; i++) dgv1.Rows[i].Height += 15;
+            for (int i = 0; i < dgv1.Rows.Count; i++) 
+                dgv1.Rows[i].Height += 15;
+
             LoadData();
             dgv1.FirstDisplayedScrollingRowIndex = dgv1.RowCount - 1;
         }
@@ -69,6 +77,7 @@ namespace TransportOptimizer.src.view
         private void LoadData()
         {
             int i;
+
             for (i = 0; i < array.Length; i++)
             {
                 dgv1.Rows[i].Cells[0].Value = array[i].ID;

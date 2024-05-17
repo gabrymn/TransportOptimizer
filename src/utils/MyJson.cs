@@ -14,9 +14,12 @@ namespace TransportOptimizer.src.utils
                 switch (serialize)
                 {
                     case true:
-                        File.AppendAllText(path, start + System.Text.Json.JsonSerializer.Serialize(t) + end); break;
+                        File.AppendAllText(path, start + System.Text.Json.JsonSerializer.Serialize(t) + end); 
+                        break;
+
                     case false:
-                        File.AppendAllText(path, start + t.ToString() + end); break;
+                        File.AppendAllText(path, start + t.ToString() + end); 
+                        break;
                 }
             }
             catch (FileNotFoundException) { System.Windows.Forms.MessageBox.Show(Const.PACKAGE_NOT_FOUND_MSG); }

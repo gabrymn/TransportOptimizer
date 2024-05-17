@@ -15,13 +15,13 @@ namespace TransportOptimizer.src.algo
     {
         public static bool Run(ref List<SummaryData> list, ref Table table)
         {
-            SummaryData obj = new SummaryData();
+            var obj = new SummaryData();
 
             if (table.RowsCount > 0 || table.ColumnsCount > 0)
             {
                 if (table.RowsCount > 1 || table.ColumnsCount > 1)
                 {
-                    bool removeColumn = false;
+                    bool remove_column = false;
                     int rv = table.GetAt(table.RowsCount, 0);
                     int cv = table.GetAt(0, table.ColumnsCount);
 
@@ -29,7 +29,7 @@ namespace TransportOptimizer.src.algo
                     {
                         obj.Quantity = rv;
                         obj.Price = obj.Quantity * table.GetAt(0, 0);
-                        removeColumn = true;
+                        remove_column = true;
                         table.SetAt(0, table.ColumnsCount, cv - rv);
                         table.SetLastXY(table.YLineSummary(table.ColumnsCount));
                     }
@@ -40,10 +40,13 @@ namespace TransportOptimizer.src.algo
                         table.SetAt(table.RowsCount, 0, rv - cv);
                         table.SetLastXY(table.XLineSummary(table.RowsCount));
                     }
+
                     obj.FromTo = table.GetHeaderRowAt(0) + " - " + table.GetHeaderColumnAt(0);
 
-                    if (removeColumn) table.RemoveColumnAt(0);
-                    else table.RemoveRowAt(0);
+                    if (remove_column) 
+                        table.RemoveColumnAt(0);
+                    else 
+                        table.RemoveRowAt(0);
 
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
@@ -57,8 +60,17 @@ namespace TransportOptimizer.src.algo
                     obj.FromTo = table.GetHeaderRowAt(0) + " - " + table.GetHeaderColumnAt(0);
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
-                    SummaryData sum = new SummaryData(Const.ATTR_TOTAL_NAME, SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), null, SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME));
+                    
+                    var sum = new SummaryData
+                    (
+                        Const.ATTR_TOTAL_NAME, 
+                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        null, 
+                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                    );
+
                     list.Add(sum);
+
                     table.VisibleStatus(false);
 
                     return false;
