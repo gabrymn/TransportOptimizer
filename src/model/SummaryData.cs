@@ -27,58 +27,76 @@ namespace TransportOptimizer.src.model
 
         public SummaryData()
         {
-            id = fromTo = string.Empty;
-            quantity = price = 0;
+            id = string.Empty;
+            quantity = 0;
+            fromTo = string.Empty;
+            price = 0;
         }
 
-        public static int Sum(SummaryData[] array, string c)
+        /// <summary>
+        /// Converts price attribute from a int to a string (int: 478879 => string: "478.879")
+        /// </summary>
+        /// <returns></returns>
+        public string PriceToString()
         {
-            int s = 0;
+            // if this.price has less than 4 digits:
+            if (this.price < 1000)
+                return this.price.ToString();
 
-            if (Utils.EqualsICase(Const.ATTR_QNT_NAME, c))
-            {
-                for (int i = 0; i < array.Length; i++)
-                    s += array[i].Quantity;
-            }
-            else if (Utils.EqualsICase(Const.ATTR_PRICE_NAME, c))
-            {
-                for (int i = 0; i < array.Length; i++)
-                    s += array[i].Price;
-            }
-            else
-                s = -1;
+            var price_str = new StringBuilder(this.price.ToString());
 
-            return s;
-        }
-
-        public static string PriceFormat(long value)
-        {
-            string str = value.ToString();
-            
-            if (str.Length < 4) 
-                return str;
-            
-            var price = new StringBuilder(value.ToString());
-
-            int serie = price.Length - 3;
-            int p = price.Length - 1;
+            int serie = price_str.Length - 3;
+            int p = price_str.Length - 1;
 
             do
             {
                 if (p == serie && p != 0)
                 {
-                    price.Insert(serie, '.');
+                    price_str.Insert(serie, '.');
                     serie = serie - 3;
                 }
 
                 p--;
-            
+
             } while (p > -1);
 
-            return price.ToString();
+            return price_str.ToString();
         }
 
-        public static void ToJsonFile(string path, SummaryData[] array)
+        /// <summary>
+        ///  Returns the sum of quantity or price in a SummaryData array
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="attribute_name"></param>
+        /// <returns></returns>
+        public static int SumOf(SummaryData[] array, string attribute_name)
+        {
+            int sum = 0;
+
+            if (Utils.EqualsICase(Const.ATTR_QNT_NAME, attribute_name))
+            {
+                for (int i = 0; i < array.Length; i++)
+                    sum += array[i].Quantity;
+            }
+
+            else if (Utils.EqualsICase(Const.ATTR_PRICE_NAME, attribute_name))
+            {
+                for (int i = 0; i < array.Length; i++)
+                    sum += array[i].Price;
+            }
+
+            else
+                sum = -1;
+
+            return sum;
+        }
+
+        /// <summary>
+        /// Write an array of SummaryData in a json file 
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="path"></param>
+        public static void ToJsonFile(SummaryData[] array, string path)
         {
             string start = "\t", end = ",\n";
 
@@ -96,7 +114,7 @@ namespace TransportOptimizer.src.model
                         ID = array[i].ID, 
                         Quantity = array[i].Quantity, 
                         Movement = array[i].FromTo, 
-                        Price = SummaryData.PriceFormat(array[i].Price) 
+                        Price = array[i].PriceToString()
                     }, 
                     start: start, 
                     end: end

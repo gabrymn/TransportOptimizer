@@ -13,43 +13,38 @@ namespace TransportOptimizer.src.middleware
 {
     internal class Method
     {
-        private static int msTimeout = Const.AVG_MS_TIMEOUT;
-
-        public static int MsTimeout
-        {
-            get => msTimeout;
-            set { msTimeout = value < Const.MIN_MS_TIMEOUT ? Const.MIN_MS_TIMEOUT : value > Const.MAX_MS_TIMEOUT ? Const.MAX_MS_TIMEOUT : value; }
-        }
-
-        public void ResetTimeout() => msTimeout = Const.AVG_MS_TIMEOUT;
-
         public static bool Run(string? method, Table table, Main mainform)
         {
             if (method == null || Const.METHODS.Contains(method) == false)
                 method = Const.FASTER_METHOD;
 
-            List<SummaryData> data = new List<SummaryData>();
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = MsTimeout;
-            bool status = false;
+            var data = new List<SummaryData>();
+            
+            var timer = new System.Windows.Forms.Timer();
+            timer.Interval = Const.MS_INTERVAL;
 
+            // used to measure the method time is seconds
             var stopWatch = new System.Diagnostics.Stopwatch();
+
+            // true = keep going
+            // false = method process is over
+            bool method_status = true;
 
             timer.Tick += delegate
             {
                 if (method == Const.METHODS[0]) 
-                    status = NorthwestCorner.Run(ref data, ref table);
+                    method_status = NorthwestCorner.Run(ref data, ref table);
 
-                else if (method == Const.METHODS[1]) 
-                    status = LeastCost.Run(ref data, ref table);
+                else if (method == Const.METHODS[1])
+                    method_status = LeastCost.Run(ref data, ref table);
 
                 else if (method == Const.METHODS[2])
-                    status = VogelApprox.Run(ref data, ref table);
+                    method_status = VogelApprox.Run(ref data, ref table);
 
                 else
-                    status = RussellApprox.Run(ref data, ref table);
+                    method_status = RussellApprox.Run(ref data, ref table);
 
-                if (status == false)
+                if (method_status == false)
                 {
                     timer.Stop();
                     stopWatch.Stop();

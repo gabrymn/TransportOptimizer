@@ -16,7 +16,7 @@ namespace TransportOptimizer.src.view
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = Const.MIN_MS_TIMEOUT;
+            timer.Interval = Const.MS_INTERVAL;
             progressBar.Width = 0;
         }
 
@@ -30,7 +30,7 @@ namespace TransportOptimizer.src.view
 
         private void Loading_Load(object sender, EventArgs e)
         {
-            Run(delay: Const.MIN_MS_TIMEOUT);
+            Run(delay: Const.MS_INTERVAL);
         }
 
         private void Run(int delay)

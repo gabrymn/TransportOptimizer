@@ -15,7 +15,7 @@ namespace TransportOptimizer.src.view
         private Table table;
         private delegate void UpdateControlsDelegate();
         private dynamic Buffer;
-        private bool Running;
+        private bool MethodIsRunning;
 
         public Main()
         {
@@ -29,7 +29,7 @@ namespace TransportOptimizer.src.view
         private void Form1_Load(object sender, EventArgs e)
         {
             table.Enable();
-            SetTextBoxs(new System.Windows.Forms.TextBox[] { textBox1, textBox2, tbMinVal, tbMaxVal });
+            SetTextBoxs([textBox1, textBox2, tbMinVal, tbMaxVal]);
             SetMSComboBox();
         }
 
@@ -46,7 +46,8 @@ namespace TransportOptimizer.src.view
 
             foreach (var tb in tbs)
             {
-                tb.Tag = tag; tag++;
+                tb.Tag = tag; 
+                tag++;
                 tb.Text = Const.TERMS[(int)tb.Tag];
                 tb.ForeColor = Color.Silver;
                 tb.GotFocus += RemoveText;
@@ -76,7 +77,7 @@ namespace TransportOptimizer.src.view
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Running)
+            if (MethodIsRunning)
             {
                 System.Media.SystemSounds.Hand.Play();
                 return;
@@ -102,12 +103,12 @@ namespace TransportOptimizer.src.view
 
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            table.ControlCurrentCellValue();
+            table.CheckCurrentCellValue();
         }
 
         private void btnExeRd_Click(object sender, EventArgs e)
         {
-            if (Running)
+            if (MethodIsRunning)
             {
                 System.Media.SystemSounds.Hand.Play();
                 return;
@@ -135,7 +136,7 @@ namespace TransportOptimizer.src.view
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (Running)
+            if (MethodIsRunning)
             {
                 System.Media.SystemSounds.Hand.Play();
                 return;
@@ -144,7 +145,7 @@ namespace TransportOptimizer.src.view
         }
 
         /// <summary>
-        ///  Controlla che un thread non abbia accesso a una risorsa di cui non è il creatore
+        ///  Checks that a thread does not have access to a resource for which it is not the creator
         /// </summary>
         public void InvokeUpdateControls(Action action)
         {
@@ -156,25 +157,25 @@ namespace TransportOptimizer.src.view
 
         private void button3_Click_2(object sender, EventArgs e)
         {
-            if (Running)
+            if (MethodIsRunning)
             {
                 System.Media.SystemSounds.Hand.Play();
                 return;
             }
 
-            if (table.Full == false)
+            if (table.IsFull() == false)
             {
                 System.Media.SystemSounds.Hand.Play();
                 MessageBox.Show(Const.ALL_CELLS_REQ_MSG);
             }
-            else if (table.ControlStart() == false)
+            else if (table.DataIsConsistent() == false)
             {
                 System.Media.SystemSounds.Hand.Play();
-                MessageBox.Show(Const.CHECK_LAST_ROW_COLUMN_DATA_MSG);
+                MessageBox.Show(Const.INCONSISTENT_DATA_MSG);
             }
             else
             {
-                Running = true;
+                MethodIsRunning = true;
                 table.ReadOnly(true);
                 Buffer = Tuple.Create(table.RowsCount, table.ColumnsCount, table.GetData());
                 string method = methods.SelectedItem.ToString();
@@ -183,7 +184,7 @@ namespace TransportOptimizer.src.view
             }
         }
 
-        public void CallReset()
+        public void ResetDataGridView()
         {
             table.VisibleStatus(true);
 
@@ -191,7 +192,7 @@ namespace TransportOptimizer.src.view
             {
                 table = new Table(Buffer.Item1, Buffer.Item2, dataGridView1, Buffer.Item3, true);
                 table.ReadOnly(false);
-                Running = false;
+                MethodIsRunning = false;
             }
             catch (Exception e)
             {
@@ -202,20 +203,17 @@ namespace TransportOptimizer.src.view
             //Task.Run(ResetBuffer);
         }
 
-        private void ResetBuffer()
-        {
-            Task.Delay(200);
-            Buffer = null;
-        }
-
         private void Form1_Click(object sender, EventArgs e)
         {
             label1.Select();
         }
 
+        /// <summary>
+        /// Clear all selected cells in the table
+        /// </summary>
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs k)
         {
-            if (Running)
+            if (MethodIsRunning)
             {
                 System.Media.SystemSounds.Hand.Play();
                 return;

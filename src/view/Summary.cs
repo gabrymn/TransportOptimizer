@@ -83,13 +83,13 @@ namespace TransportOptimizer.src.view
                 dgv1.Rows[i].Cells[0].Value = array[i].ID;
                 dgv1.Rows[i].Cells[1].Value = array[i].Quantity;
                 dgv1.Rows[i].Cells[2].Value = array[i].FromTo;
-                dgv1.Rows[i].Cells[3].Value = SummaryData.PriceFormat(array[i].Price);
+                dgv1.Rows[i].Cells[3].Value = array[i].PriceToString();
             }
         }
 
         private void exit0_Click(object sender, EventArgs e)
         {
-            mainform.CallReset();
+            mainform.ResetDataGridView();
             Close();
         }
 
@@ -97,16 +97,16 @@ namespace TransportOptimizer.src.view
         {
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                SummaryData.ToJsonFile(path: sfd.FileName, array: array);
+                SummaryData.ToJsonFile(array: array, path: sfd.FileName);
 
-                mainform.CallReset();
+                mainform.ResetDataGridView();
                 Close();
             }
         }
 
         private void Summary_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mainform.CallReset();
+            mainform.ResetDataGridView();
         }
     }
 }

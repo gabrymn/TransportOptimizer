@@ -10,6 +10,13 @@ namespace TransportOptimizer.src.model
 {
     public sealed class Table
     {
+        public struct Cell
+        {
+            public int Value;
+            public int RowIndex;
+            public int ColumnIndex;
+        }
+
         private int rowsCount, columnsCount;
         private readonly DataGridView view;
         private readonly static Random rd = new Random();
@@ -17,39 +24,8 @@ namespace TransportOptimizer.src.model
         public int RowsCount { get => rowsCount; }
         public int ColumnsCount { get => columnsCount; }
         public int CellsCount { get => rowsCount * columnsCount; }
-        public bool Full { get => IsFull(); }
-        public void Clear() => Iterate(string.Empty);
-        public DataGridView View { get => view; }
         public Cell Min { get => GetMin(); }
 
-        public int RealHeight 
-        { 
-            get 
-            { 
-                int s = 0; 
-                view.Rows.Cast<DataGridViewRow>().ToList().ForEach(row => s += row.Height); 
-                s += view.ColumnHeadersHeight; 
-                return s; 
-            } 
-        }
-
-        public int RealWidth
-        {
-            get
-            {
-                int s = 0;
-                view.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => s += column.Width);
-                s += view.ColumnHeadersHeight;
-                return s;
-            }
-        }
-
-        public struct Cell
-        {
-            public int Value;
-            public int R;
-            public int C;
-        }
 
         public Table(int rowsCount, int columnsCount, DataGridView view, bool enable = false)
         {
@@ -70,26 +46,13 @@ namespace TransportOptimizer.src.model
             SetData(data);
         }
 
+        public void Clear() => FillWith(string.Empty);
+
         public void Enable()
         {
             SetDataGridViewProperties();
             SetVisualElements();
             //setDefaultData();
-        }
-
-        public void setDefaultData()
-        {
-            int[,] default_data = new int[,]
-            {
-                { 10, 12, 80, 30, 50, 200 },
-                { 15, 30, 40, 45, 60, 150 },
-                { 20, 35, 30, 20, 50, 160 },
-                { 100, 120, 90, 50, 150, 510 }
-            };
-
-            for (int i = 0; i < rowsCount + 1; i++)
-                for (int j = 0; j < columnsCount + 1; j++)
-                    SetAt(i, j, default_data[i, j]);
         }
 
         public bool RemoveRowAt(int index)
@@ -112,7 +75,6 @@ namespace TransportOptimizer.src.model
                 Console.WriteLine(e); 
                 return false; 
             }
-
         }
 
         public void RemoveLastColumn()
@@ -164,7 +126,7 @@ namespace TransportOptimizer.src.model
         {
             SetTableStruct();
             SetHeaders(Const.ATTR_UNIT_PROD, Const.ATTR_DEST, Const.ATTR_TOTAL_NAME);
-            Iterate(value: string.Empty);
+            FillWith(string.Empty);
             SetBackground();
             SetSize(140, 60);
             //view.BorderStyle = BorderStyle.None;
@@ -225,10 +187,13 @@ namespace TransportOptimizer.src.model
             try
             {
                 DataTable dt = new DataTable();
+
                 for (int i = 0; i <= columnsCount; i++)
                     dt.Columns.Add(new DataColumn());
+
                 for (int i = 0; i <= rowsCount; i++)
                     dt.Rows.Add(dt.NewRow());
+
                 DataView dv = new DataView(dt);
                 view.DataSource = null;
                 view.DataSource = dv;
@@ -263,7 +228,7 @@ namespace TransportOptimizer.src.model
             catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
         }
 
-        public void ControlCurrentCellValue()
+        public void CheckCurrentCellValue()
         {
             try
             {
@@ -284,7 +249,7 @@ namespace TransportOptimizer.src.model
             catch (Exception e) { Console.WriteLine(e); }
         }
 
-        private void Iterate<T>(T value)
+        private void FillWith<T>(T value)
         {
             try
             {
@@ -359,7 +324,6 @@ namespace TransportOptimizer.src.model
 
                 void local(int[] array, int last)
                 {
-
                     int med = last / array.Length;
                     int[] m = Enumerable.Repeat(med, array.Length).ToArray();
 
@@ -465,7 +429,7 @@ namespace TransportOptimizer.src.model
             return tmin;
         }
 
-        public int XLineIndex(int rowIndex, int value)
+        public int XLineIndexOf(int rowIndex, int value)
         {
             for (int i = 0; i < view.Columns.Count; i++)
             {
@@ -478,7 +442,7 @@ namespace TransportOptimizer.src.model
             return -1;
         }
 
-        public int YLineIndex(int columnIndex, int value)
+        public int YLineIndexOf(int columnIndex, int value)
         {
             for (int i = 0; i < view.Rows.Count; i++)
             {
@@ -491,7 +455,7 @@ namespace TransportOptimizer.src.model
             return -1;
         }
 
-        public int YLineSummary(int index)
+        public int YLineSummary(int columnIndex)
         {
             try
             {
@@ -499,7 +463,7 @@ namespace TransportOptimizer.src.model
                 int y2 = GetLastXY();
 
                 for (int i = 0; i < view.Rows.Count; i++)
-                    y1 += Convert.ToInt32(view.Rows[i].Cells[index].Value);
+                    y1 += Convert.ToInt32(view.Rows[i].Cells[columnIndex].Value);
 
                 return y1 - y2;
             }
@@ -550,7 +514,7 @@ namespace TransportOptimizer.src.model
             while (n-- > 0) dgv.Columns.Add(new DataGridViewColumn());
         }
 
-        private bool IsFull()
+        public bool IsFull()
         {
             try
             {
@@ -574,16 +538,16 @@ namespace TransportOptimizer.src.model
             {
                 Cell min;
                 min.Value = Convert.ToInt32(view.Rows[0].Cells[0].Value);
-                min.R = 0;
-                min.C = 0;
+                min.RowIndex = 0;
+                min.ColumnIndex = 0;
 
                 for (int i = 0; i < rowsCount; i++)
                     for (int j = 0; j < columnsCount; j++)
                         if (Convert.ToInt32(view.Rows[i].Cells[j].Value) < min.Value)
                         {
                             min.Value = Convert.ToInt32(view.Rows[i].Cells[j].Value);
-                            min.R = i;
-                            min.C = j;
+                            min.RowIndex = i;
+                            min.ColumnIndex = j;
                         }
 
                 return min;
@@ -597,16 +561,16 @@ namespace TransportOptimizer.src.model
             {
                 Cell min;
                 min.Value = m[0, 0];
-                min.R = 0;
-                min.C = 0;
+                min.RowIndex = 0;
+                min.ColumnIndex = 0;
 
                 for (int i = 0; i < m.GetLength(0); i++)
                     for (int j = 0; j < m.GetLength(1); j++)
                         if (m[i, j] < min.Value)
                         {
                             min.Value = m[i, j];
-                            min.R = i;
-                            min.C = j;
+                            min.RowIndex = i;
+                            min.ColumnIndex = j;
                         }
 
                 return min;
@@ -619,7 +583,7 @@ namespace TransportOptimizer.src.model
             view.Visible = status;
         }
 
-        public bool ControlStart()
+        public bool DataIsConsistent()
         {
             bool eq1 = XLineSummary(rowsCount) == YLineSummary(columnsCount);
             bool eq2 = YLineSummary(columnsCount) == GetLastXY();
@@ -627,76 +591,91 @@ namespace TransportOptimizer.src.model
             return eq1 && eq2;
         }
 
-        public int DeltaM(string rc, int index)
-        {
-            rc = rc.ToLower();
-
-            if (rc == Const.ROW)
-            {
-                int min1 = 0;
-
-                for (int i = 1; i < ColumnsCount; i++)
-                {
-                    int v = Convert.ToInt32(view.Rows[index].Cells[i].Value);
-                    int min1V = Convert.ToInt32(view.Rows[index].Cells[min1].Value);
-
-                    if (v < min1V) 
-                        min1 = i;
-                }
-
-                int min2 = min1 == 0 ? 1 : 0;
-
-                for (int i = 0; i < ColumnsCount; i++)
-                {
-                    int v = Convert.ToInt32(view.Rows[index].Cells[i].Value);
-                    int min2V = Convert.ToInt32(view.Rows[index].Cells[min2].Value);
-                    
-                    if (v < min2V && i != min1) 
-                        min2 = i;
-                }
-
-                return Math.Abs(
-                    Convert.ToInt32(view.Rows[index].Cells[min1].Value)
-                    -
-                    Convert.ToInt32(view.Rows[index].Cells[min2].Value)
-                );
-            }
-
-            if (rc == Const.COLUMN)
-            {
-                int min1 = 0;
-
-                for (int i = 1; i < RowsCount; i++)
-                {
-                    int v = Convert.ToInt32(view.Rows[i].Cells[index].Value);
-                    int min1V = Convert.ToInt32(view.Rows[min1].Cells[index].Value);
-                    if (v < min1V) min1 = i;
-                }
-
-                int min2 = min1 == 0 ? 1 : 0;
-
-                for (int i = 0; i < RowsCount; i++)
-                {
-                    int v = Convert.ToInt32(view.Rows[i].Cells[index].Value);
-                    int min2V = Convert.ToInt32(view.Rows[min2].Cells[index].Value);
-                    
-                    if (v < min2V && i != min1) 
-                        min2 = i;
-                }
-
-                return Math.Abs(
-                    Convert.ToInt32(view.Rows[min1].Cells[index].Value)
-                    -
-                    Convert.ToInt32(view.Rows[min2].Cells[index].Value)
-                );
-            }
-
-            return -1;
-        }
-
         public void ReadOnly(bool status)
         {
             view.ReadOnly = status;
+        }
+
+        /// <summary>
+        /// Calculate the absolute difference between the two mins of a specific row or column
+        /// </summary>
+        public int DeltaMin(bool row, int target_index)
+        {
+            int temp;
+
+            if (row)
+            {
+                // Get first min of the row [target_index]
+
+                int min1_index = 0;
+                int min1_value;
+
+                for (int i = 1; i < ColumnsCount; i++)
+                {
+                    temp = Convert.ToInt32(view.Rows[target_index].Cells[i].Value);
+                    min1_value = Convert.ToInt32(view.Rows[target_index].Cells[min1_index].Value);
+
+                    if (temp < min1_value)
+                        min1_index = i;
+                }
+
+                // Get second min of the row [target_index]
+
+                int min2_index = min1_index == 0 ? 1 : 0;
+                int min2_value;
+
+                for (int i = 0; i < ColumnsCount; i++)
+                {
+                    temp = Convert.ToInt32(view.Rows[target_index].Cells[i].Value);
+                    min2_value = Convert.ToInt32(view.Rows[target_index].Cells[min2_index].Value);
+
+                    if (temp < min2_value && i != min1_index)
+                        min2_index = i;
+                }
+
+                return Math.Abs(
+                    Convert.ToInt32(view.Rows[target_index].Cells[min1_index].Value)
+                    -
+                    Convert.ToInt32(view.Rows[target_index].Cells[min2_index].Value)
+                );
+            }
+
+            else
+            {
+                // Get first min of the column [target_index]
+
+                int min1_index = 0;
+                int min1_value;
+
+                for (int i = 1; i < RowsCount; i++)
+                {
+                    temp = Convert.ToInt32(view.Rows[i].Cells[target_index].Value);
+                    min1_value = Convert.ToInt32(view.Rows[min1_index].Cells[target_index].Value);
+                    
+                    if (temp < min1_value)
+                        min1_index = i;
+                }
+
+                // Get second min of the column [target_index]
+
+                int min2_index = min1_index == 0 ? 1 : 0;
+                int min2_value;
+
+                for (int i = 0; i < RowsCount; i++)
+                {
+                    temp = Convert.ToInt32(view.Rows[i].Cells[target_index].Value);
+                    min2_value = Convert.ToInt32(view.Rows[min2_index].Cells[target_index].Value);
+
+                    if (temp < min2_value && i != min1_index)
+                        min2_index = i;
+                }
+
+                return Math.Abs(
+                    Convert.ToInt32(view.Rows[min1_index].Cells[target_index].Value)
+                    -
+                    Convert.ToInt32(view.Rows[min2_index].Cells[target_index].Value)
+                );
+            }
         }
     }
 }

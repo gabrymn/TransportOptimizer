@@ -25,10 +25,10 @@ namespace TransportOptimizer.src.algo
                     int[] yline = new int[table.RowsCount];    // _
 
                     for (int i = 0; i < table.RowsCount; i++)
-                        yline[i] = table.DeltaM(Const.ROW.ToUpper(), i);
+                        yline[i] = table.DeltaMin(true, i);
 
                     for (int i = 0; i < table.ColumnsCount; i++)
-                        xline[i] = table.DeltaM(Const.COLUMN.ToUpper(), i);
+                        xline[i] = table.DeltaMin(false, i);
 
                     int maxR = xline[0];
 
@@ -47,55 +47,55 @@ namespace TransportOptimizer.src.algo
                     if (maxC > maxR)
                     {
                         var tlist = Utils.CountVal(yline, maxC);
-                        int mindex = tlist[0];
+                        int h = tlist[0];
 
                         if (tlist.Count > 1)
                         {
-                            mindex = table.XLineMin(tlist[0]);
+                            h = table.XLineMin(tlist[0]);
 
                             for (int i = 1; i < tlist.Count; i++)
                             {
                                 var t = table.XLineMin(tlist[i]);
-                                if (t < mindex) 
+                                if (t < h) 
                                 { 
-                                    mindex = t; 
+                                    h = t; 
                                     q = i; 
                                 }
                             }
 
                             r = tlist[q];
-                            c = table.XLineIndex(r, mindex);
+                            c = table.XLineIndexOf(r, h);
                         }
 
                         r = tlist[0];
-                        c = table.XLineIndex(r, table.XLineMin(r));
+                        c = table.XLineIndexOf(r, table.XLineMin(r));
                     }
                     else
                     {
                         var tlist = Utils.CountVal(xline, maxR);
-                        int mindex = tlist[0];
+                        int h = tlist[0];
 
                         if (tlist.Count > 1)
                         {
-                            mindex = table.YLineMin(tlist[0]);
+                            h = table.YLineMin(tlist[0]);
 
                             for (int i = 1; i < tlist.Count; i++)
                             {
                                 var t = table.YLineMin(tlist[i]);
 
-                                if (t < mindex) 
+                                if (t < h) 
                                 { 
-                                    mindex = t; 
+                                    h = t; 
                                     q = i; 
                                 }
                             }
 
                             r = tlist[q];
-                            c = table.YLineIndex(r, mindex);
+                            c = table.YLineIndexOf(r, h);
                         }
 
                         c = tlist[0];
-                        r = table.YLineIndex(c, table.YLineMin(c));
+                        r = table.YLineIndexOf(c, table.YLineMin(c));
                     }
 
                     int val_r = table.GetAt(r, table.ColumnsCount);
@@ -141,9 +141,9 @@ namespace TransportOptimizer.src.algo
                     var sum = new SummaryData
                     (
                         Const.ATTR_TOTAL_NAME, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_QNT_NAME), 
                         null, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_PRICE_NAME)
                     );
                     list.Add(sum);
                     

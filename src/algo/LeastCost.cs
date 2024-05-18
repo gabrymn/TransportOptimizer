@@ -22,32 +22,32 @@ namespace TransportOptimizer.src.algo
                 if (table.RowsCount > 1 || table.ColumnsCount > 1)
                 {
                     bool remove_column = false;
-                    var m = table.Min;
-                    int val_r = table.GetAt(m.R, table.ColumnsCount);
-                    int val_c = table.GetAt(table.RowsCount, m.C);
+                    var minCell = table.Min;
+                    int val_r = table.GetAt(minCell.RowIndex, table.ColumnsCount);
+                    int val_c = table.GetAt(table.RowsCount, minCell.ColumnIndex);
 
                     if (val_c < val_r)
                     {
                         obj.Quantity = val_c;
-                        obj.Price = obj.Quantity * m.Value;
+                        obj.Price = obj.Quantity * minCell.Value;
                         remove_column = true;
-                        table.SetAt(m.R, table.ColumnsCount, val_r - val_c);
+                        table.SetAt(minCell.RowIndex, table.ColumnsCount, val_r - val_c);
                         table.SetLastXY(table.YLineSummary(table.ColumnsCount));
                     }
                     else
                     {
                         obj.Quantity = val_r;
-                        obj.Price = obj.Quantity * m.Value;
-                        table.SetAt(table.RowsCount, m.C, val_c - val_r);
+                        obj.Price = obj.Quantity * minCell.Value;
+                        table.SetAt(table.RowsCount, minCell.ColumnIndex, val_c - val_r);
                         table.SetLastXY(table.XLineSummary(table.RowsCount));
                     }
 
-                    obj.FromTo = table.GetHeaderRowAt(m.R) + " - " + table.GetHeaderColumnAt(m.C);
+                    obj.FromTo = table.GetHeaderRowAt(minCell.RowIndex) + " - " + table.GetHeaderColumnAt(minCell.ColumnIndex);
 
                     if (remove_column) 
-                       table.RemoveColumnAt(m.C);
+                       table.RemoveColumnAt(minCell.ColumnIndex);
                     else 
-                        table.RemoveRowAt(m.R);
+                        table.RemoveRowAt(minCell.RowIndex);
 
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
@@ -66,9 +66,9 @@ namespace TransportOptimizer.src.algo
                     var sum = new SummaryData
                     (
                         Const.ATTR_TOTAL_NAME, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_QNT_NAME), 
                         null, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_PRICE_NAME)
                     );
                     
                     list.Add(sum);

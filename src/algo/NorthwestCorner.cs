@@ -64,9 +64,9 @@ namespace TransportOptimizer.src.algo
                     var sum = new SummaryData
                     (
                         Const.ATTR_TOTAL_NAME, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_QNT_NAME), 
                         null, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_PRICE_NAME)
                     );
 
                     list.Add(sum);

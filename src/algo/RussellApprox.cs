@@ -45,34 +45,34 @@ namespace TransportOptimizer.src.algo
                         for (int j = 0; j < vm.GetLength(0); j++) 
                             vm[j, i] -= maxrs[j];
 
-                    var min = Table.GetMin(vm);
-                    int val_r = table.GetAt(min.R, table.ColumnsCount);
-                    int val_c = table.GetAt(table.RowsCount, min.C);
+                    var minCell = Table.GetMin(vm);
+                    int val_r = table.GetAt(minCell.RowIndex, table.ColumnsCount);
+                    int val_c = table.GetAt(table.RowsCount, minCell.ColumnIndex);
 
                     bool remove_column = false;
 
                     if (val_c < val_r)
                     {
                         obj.Quantity = val_c;
-                        obj.Price = obj.Quantity * table.GetAt(min.R, min.C);
+                        obj.Price = obj.Quantity * table.GetAt(minCell.RowIndex, minCell.ColumnIndex);
                         remove_column = true;
-                        table.SetAt(min.R, table.ColumnsCount, val_r - val_c);
+                        table.SetAt(minCell.RowIndex, table.ColumnsCount, val_r - val_c);
                         table.SetLastXY(table.YLineSummary(table.ColumnsCount));
                     }
                     else
                     {
                         obj.Quantity = val_r;
-                        obj.Price = obj.Quantity * table.GetAt(min.R, min.C);
-                        table.SetAt(table.RowsCount, min.C, val_c - val_r);
+                        obj.Price = obj.Quantity * table.GetAt(minCell.RowIndex, minCell.ColumnIndex);
+                        table.SetAt(table.RowsCount, minCell.ColumnIndex, val_c - val_r);
                         table.SetLastXY(table.XLineSummary(table.RowsCount));
                     }
 
-                    obj.FromTo = table.GetHeaderRowAt(min.R) + " - " + table.GetHeaderColumnAt(min.C);
+                    obj.FromTo = table.GetHeaderRowAt(minCell.RowIndex) + " - " + table.GetHeaderColumnAt(minCell.ColumnIndex);
 
                     if (remove_column) 
-                        table.RemoveColumnAt(min.C);
+                        table.RemoveColumnAt(minCell.ColumnIndex);
                     else 
-                        table.RemoveRowAt(min.R);
+                        table.RemoveRowAt(minCell.RowIndex);
                     
                     obj.ID = (list.Count + 1).ToString();
                     list.Add(obj);
@@ -91,9 +91,9 @@ namespace TransportOptimizer.src.algo
                     var sum = new SummaryData
                     (
                         Const.ATTR_TOTAL_NAME, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_QNT_NAME), 
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_QNT_NAME), 
                         null, 
-                        SummaryData.Sum(list.ToArray(), Const.ATTR_PRICE_NAME)
+                        SummaryData.SumOf(list.ToArray(), Const.ATTR_PRICE_NAME)
                     );
 
                     list.Add(sum);
