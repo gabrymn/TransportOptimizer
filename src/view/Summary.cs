@@ -17,7 +17,7 @@ namespace TransportOptimizer.src.view
         private SaveFileDialog sfd;
         private Main mainform;
 
-        public Summary(SummaryData[] array, string method, Table table, Main mainform, float elapsed)
+        public Summary(SummaryData[] array, string method, Table table, Main mainform, float elapsed, int iterations)
         {
             InitializeComponent();
             this.table = table;
@@ -39,7 +39,8 @@ namespace TransportOptimizer.src.view
 
             dgv1.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);
 
-            this.Text += " (" + elapsed.ToString() + " seconds)";
+            this.Text += " (" + elapsed.ToString() + " seconds; ";
+            this.Text += iterations.ToString() + " iterations)";
         }
 
         private void SetSFD()

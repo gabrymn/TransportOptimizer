@@ -24,7 +24,7 @@ namespace TransportOptimizer.src.view
         {
             if (InvokeRequired)
                 Invoke(new CloseDelegate(action));
-            else 
+            else
                 action();
         }
 
@@ -37,21 +37,22 @@ namespace TransportOptimizer.src.view
         {
             timer.Tick += delegate
             {
-                InvokeControls(() => progressBar.Width += 10);
+                InvokeControls(() => progressBar.Width += 3);
 
-                if (progressBar.Width == 1200)
+                if (progressBar.Width == 981)
                 {
                     Thread.Sleep(delay);
                     timer.Stop();
                     InvokeControls(Hide);
-                    
-                    try 
-                    { 
-                        new Main().ShowDialog(); 
 
-                    } catch (ThreadStateException e) 
-                    { 
-                        Console.WriteLine(e); 
+                    try
+                    {
+                        new Main().ShowDialog();
+
+                    }
+                    catch (ThreadStateException e)
+                    {
+                        Console.WriteLine(e);
                     }
 
                     InvokeControls(Close);

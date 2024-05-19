@@ -13,50 +13,70 @@ namespace TransportOptimizer.src.middleware
 {
     internal class Method
     {
-        public static bool Run(string? method, Table table, Main mainform)
+        public delegate bool Runnable(ref List<SummaryData> output_data, ref Table table);
+
+        public static bool Run(string? method_name, Table table, Main mainform)
         {
-            if (method == null || Const.METHODS.Contains(method) == false)
-                method = Const.FASTER_METHOD;
+            if (method_name == null || Const.METHODS.Contains(method_name) == false)
+                method_name = Const.FASTER_METHOD;
 
-            var data = new List<SummaryData>();
+            var output_data = new List<SummaryData>();
             
-            var timer = new System.Windows.Forms.Timer();
-            timer.Interval = Const.MS_INTERVAL;
+            // Form timer, its used to run the method every X milliseconds
+            var UIT = new System.Windows.Forms.Timer();
+            UIT.Interval = Const.MS_INTERVAL;
 
-            // used to measure the method time is seconds
-            var stopWatch = new System.Diagnostics.Stopwatch();
+            // used to measure the method process time is seconds
+            var timer = new System.Diagnostics.Stopwatch();
 
             // true = keep going
             // false = method process is over
             bool method_status = true;
 
-            timer.Tick += delegate
+            // Method iterations
+            int iterations = 0;
+
+            // this var "contains" the chosen method and can be called like a function
+            Runnable method = GetMethod(method_name);
+
+            UIT.Tick += delegate
             {
-                if (method == Const.METHODS[0]) 
-                    method_status = NorthwestCorner.Run(ref data, ref table);
+                iterations++;
 
-                else if (method == Const.METHODS[1])
-                    method_status = LeastCost.Run(ref data, ref table);
-
-                else if (method == Const.METHODS[2])
-                    method_status = VogelApprox.Run(ref data, ref table);
-
-                else
-                    method_status = RussellApprox.Run(ref data, ref table);
+                method_status = method(ref output_data, ref table);
 
                 if (method_status == false)
                 {
+                    UIT.Stop();
                     timer.Stop();
-                    stopWatch.Stop();
-                    var elapsed = stopWatch.ElapsedMilliseconds / 1000.00f;
-                    new Summary(data.ToArray(), method.ToLower(), table, mainform, elapsed).ShowDialog();
+                    var elapsed = timer.ElapsedMilliseconds / 1000.00f;
+                    new Summary(output_data.ToArray(), method_name.ToLower(), table, mainform, elapsed, iterations).ShowDialog();
                 }
             };
 
+            UIT.Start();
             timer.Start();
-            stopWatch.Start();
 
             return true;
+        }
+
+        private static Runnable GetMethod(string method_name)
+        {
+            Runnable method;
+
+            if (method_name == Const.METHODS[0])
+                method = NorthwestCorner.Run;
+
+            else if (method_name == Const.METHODS[1])
+                method = LeastCost.Run;
+
+            else if (method_name == Const.METHODS[2])
+                method = VogelApprox.Run;
+
+            else
+                method = RussellApprox.Run;
+
+            return method;
         }
     }
 }

@@ -29,85 +29,110 @@ namespace TransportOptimizer.src.view
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.Panel();
-            this.SuspendLayout();
+            label3 = new Label();
+            label1 = new Label();
+            progressBar = new Panel();
+            label2 = new Label();
+            panel1 = new Panel();
+            label4 = new Label();
+            SuspendLayout();
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Cyan;
-            this.label3.Location = new System.Drawing.Point(103, 304);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 32);
-            this.label3.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 30, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(32, 322);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1136, 179);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Northwest    Leastcost    Vogel    Russell";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Yu Gothic UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Cyan;
+            label3.Location = new Point(103, 304);
+            label3.Name = "label3";
+            label3.Size = new Size(0, 25);
+            label3.TabIndex = 6;
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 70, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Aqua;
-            this.label1.Location = new System.Drawing.Point(32, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1136, 269);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Transport Optimizer";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.Anchor = AnchorStyles.None;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Black", 50.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Aqua;
+            label1.Location = new Point(12, 96);
+            label1.Name = "label1";
+            label1.Size = new Size(926, 127);
+            label1.TabIndex = 9;
+            label1.Text = "Transport Optimizer";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // progressBar
             // 
-            this.progressBar.BackColor = System.Drawing.Color.Aqua;
-            this.progressBar.Location = new System.Drawing.Point(-8, 576);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1209, 17);
-            this.progressBar.TabIndex = 15;
+            progressBar.BackColor = Color.Aqua;
+            progressBar.Location = new Point(-8, 452);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(958, 18);
+            progressBar.TabIndex = 15;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.RoyalBlue;
+            label2.Location = new Point(103, 281);
+            label2.Name = "label2";
+            label2.Size = new Size(542, 93);
+            label2.TabIndex = 16;
+            label2.Text = "Developed by";
+            label2.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Gainsboro;
+            panel1.Location = new Point(33, 254);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(875, 1);
+            panel1.TabIndex = 17;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.None;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI Black", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.RoyalBlue;
+            label4.Location = new Point(632, 281);
+            label4.Name = "label4";
+            label4.Size = new Size(197, 93);
+            label4.TabIndex = 18;
+            label4.Text = "gabrymn";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Loading
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(1200, 581);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
-            this.Font = new System.Drawing.Font("Trebuchet MS", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Loading";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Loading";
-            this.Load += new System.EventHandler(this.Loading_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.FromArgb(12, 12, 12);
+            ClientSize = new Size(950, 457);
+            Controls.Add(label4);
+            Controls.Add(panel1);
+            Controls.Add(label2);
+            Controls.Add(progressBar);
+            Controls.Add(label1);
+            Controls.Add(label3);
+            Font = new Font("Trebuchet MS", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = Color.Black;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Loading";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Loading";
+            Load += Loading_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel progressBar;
+        private Label label2;
+        private Panel panel1;
+        private Label label4;
     }
 }

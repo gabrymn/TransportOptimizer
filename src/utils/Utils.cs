@@ -41,7 +41,19 @@ namespace TransportOptimizer.src.utils
 
         public static void ValidateTextBox(TextBox tb)
         {
-            if (tb.Text == "0" || (!IsN(tb.Text) && !tb.Text.Equals(string.Empty)))
+            bool is_num = IsN(tb.Text);
+
+            if (is_num)
+            {
+                int num = int.Parse(tb.Text);
+
+                if (num <= 0)
+                    tb.Text = string.Empty;
+
+                return;
+            }
+
+            if (is_num == false && tb.Text.Equals(string.Empty) == false)
             {
                 tb.Text = RemoveChar(tb.Text);
                 int len = tb.Text.Length;

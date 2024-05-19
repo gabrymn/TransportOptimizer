@@ -57,7 +57,7 @@ namespace TransportOptimizer.src.view
             dgv1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(15, 16, 18);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(63, 63, 65);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
@@ -68,7 +68,7 @@ namespace TransportOptimizer.src.view
             dgv1.Columns.AddRange(new DataGridViewColumn[] { Column4, Column1, Column2, Column3 });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Bold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.White;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(114, 117, 119);
             dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
@@ -123,7 +123,7 @@ namespace TransportOptimizer.src.view
             exit0.BackColor = Color.FromArgb(34, 31, 46);
             exit0.Cursor = Cursors.Hand;
             exit0.FlatStyle = FlatStyle.Flat;
-            exit0.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            exit0.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             exit0.ForeColor = Color.White;
             exit0.Location = new Point(301, 415);
             exit0.Margin = new Padding(2);
@@ -140,7 +140,7 @@ namespace TransportOptimizer.src.view
             save0.BackColor = Color.FromArgb(34, 31, 46);
             save0.Cursor = Cursors.Hand;
             save0.FlatStyle = FlatStyle.Flat;
-            save0.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            save0.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             save0.ForeColor = Color.Aqua;
             save0.Location = new Point(509, 415);
             save0.Margin = new Padding(2);

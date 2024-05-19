@@ -206,12 +206,20 @@ namespace TransportOptimizer.src.model
         {
             try
             {
-                max++;
-                view.Rows.Cast<DataGridViewRow>().ToList().ForEach(r => r.Cells.Cast<DataGridViewCell>().ToList().ForEach(c => c.Value = rd.Next(min, max)));
+                // Fill the table with random values that belong to the range [min, max]
+                view.Rows.Cast<DataGridViewRow>().ToList().ForEach(r =>
+                {
+                    r.Cells.Cast<DataGridViewCell>().ToList().ForEach(c =>
+                    {
+                        c.Value = rd.Next(min, max+1);
+                    });
+                });
                 
+                // Fill the bottom row with 0
                 for (int i = 0; i < columnsCount; i++) 
                     view.Rows[rowsCount].Cells[i].Value = 0;
 
+                // Fill the last right column with 0
                 for (int i = 0; i < rowsCount; i++) 
                     view.Rows[i].Cells[columnsCount].Value = 0;
 
@@ -226,6 +234,56 @@ namespace TransportOptimizer.src.model
 
             }
             catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
+        }
+
+        private void GenerateTotalsRand(int[] lastRowLine, int[] lastColumnLine, int value)
+        {
+            try
+            {
+                local(lastRowLine, value);
+                local(lastColumnLine, value);
+
+                for (int i = 0; i < lastColumnLine.Length; i++)
+                    SetAt(i, ColumnsCount, lastColumnLine[i]);
+
+                for (int i = 0; i < lastRowLine.Length; i++)
+                    SetAt(rowsCount, i, lastRowLine[i]);
+
+                SetLastXY(value);
+
+                void local(int[] array, int last)
+                {
+                    int med = last / array.Length;
+                    int[] m = Enumerable.Repeat(med, array.Length).ToArray();
+
+                    while (m.Sum() < last)
+                        m[m.Length - 1]++;
+
+                    int k = -1;
+
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        if (i == (array.Length - 1))
+                        {
+                            array[i] = 0;
+                            array[i] = last - array.Sum();
+                        }
+                        else
+                        {
+                            if (i % 2 == 0)
+                            {
+                                k = rd.Next((int)(0.30 * m[i]), (int)((0.70 * m[i]) + 1));
+                                array[i] = m[i] + k;
+                            }
+                            else
+                                array[i] = m[i] - k;
+                        }
+                    }
+
+                    Utils.Shuffle(array);
+                }
+            }
+            catch (Exception e) { Console.WriteLine(e); }
         }
 
         public void CheckCurrentCellValue()
@@ -305,56 +363,6 @@ namespace TransportOptimizer.src.model
         public string GetHeaderColumnAt(int index)
         {
             return view.Columns[index].HeaderText;
-        }
-
-        private void GenerateTotalsRand(int[] lastRowLine, int[] lastColumnLine, int value)
-        {
-            try
-            {
-                local(lastRowLine, value);
-                local(lastColumnLine, value);
-
-                for (int i = 0; i < lastColumnLine.Length; i++)
-                    SetAt(i, ColumnsCount, lastColumnLine[i]);
-
-                for (int i = 0; i < lastRowLine.Length; i++)
-                    SetAt(rowsCount, i, lastRowLine[i]);
-
-                SetLastXY(value);
-
-                void local(int[] array, int last)
-                {
-                    int med = last / array.Length;
-                    int[] m = Enumerable.Repeat(med, array.Length).ToArray();
-
-                    while (m.Sum() < last) 
-                        m[m.Length - 1]++;
-
-                    int k = -1;
-
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        if (i == (array.Length - 1))
-                        {
-                            array[i] = 0;
-                            array[i] = last - array.Sum();
-                        }
-                        else
-                        {
-                            if (i % 2 == 0)
-                            {
-                                k = rd.Next((int)(0.30 * m[i]), (int)((0.70 * m[i]) + 1));
-                                array[i] = m[i] + k;
-                            }
-                            else
-                                array[i] = m[i] - k;
-                        }
-                    }
-
-                    Utils.Shuffle(array);
-                }
-            }
-            catch (Exception e) { Console.WriteLine(e); }
         }
 
         public int XLineSummary(int index)
