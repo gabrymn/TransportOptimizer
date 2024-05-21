@@ -223,68 +223,31 @@ namespace TransportOptimizer.src.model
                 for (int i = 0; i < rowsCount; i++) 
                     view.Rows[i].Cells[columnsCount].Value = 0;
 
-                int x = Math.Max(RowsCount, ColumnsCount) > 9 ? 10 : 1;
+                // gen of total_val
+                if (Math.Max(RowsCount, ColumnsCount) >= 10)
+                    multiplier = 10;
+                else
+                    multiplier = 1;
+                int total_val = 0;
+                total_val += Math.Max(RowsCount, ColumnsCount) * 100;
+                total_val += rd.Next(1, 10) * (10 * multiplier);
 
-                GenerateTotalsRand
-                (
-                    new int[ColumnsCount], 
-                    new int[RowsCount], 
-                    Math.Max(RowsCount, ColumnsCount) * 100 + (rd.Next(1, 10) * (10 * x))
-                );
+                int[] last_row = new int[ColumnsCount];
+                int[] last_column = new int[RowsCount];
 
+                Utils.RandomizeArray(last_row, total_val);
+                Utils.RandomizeArray(last_column, total_val);
+
+                for (int i = 0; i < last_column.Length; i++)
+                    SetAt(i, ColumnsCount, last_column[i]);
+
+                for (int i = 0; i < last_row.Length; i++)
+                    SetAt(rowsCount, i, last_row[i]);
+
+                SetLastXY(total_val);
             }
             catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
-        }
-
-        private void GenerateTotalsRand(int[] lastRowLine, int[] lastColumnLine, int value)
-        {
-            try
-            {
-                local(lastRowLine, value);
-                local(lastColumnLine, value);
-
-                for (int i = 0; i < lastColumnLine.Length; i++)
-                    SetAt(i, ColumnsCount, lastColumnLine[i]);
-
-                for (int i = 0; i < lastRowLine.Length; i++)
-                    SetAt(rowsCount, i, lastRowLine[i]);
-
-                SetLastXY(value);
-
-                void local(int[] array, int last)
-                {
-                    int med = last / array.Length;
-                    int[] m = Enumerable.Repeat(med, array.Length).ToArray();
-
-                    while (m.Sum() < last)
-                        m[m.Length - 1]++;
-
-                    int k = -1;
-
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        if (i == (array.Length - 1))
-                        {
-                            array[i] = 0;
-                            array[i] = last - array.Sum();
-                        }
-                        else
-                        {
-                            if (i % 2 == 0)
-                            {
-                                k = rd.Next((int)(0.30 * m[i]), (int)((0.70 * m[i]) + 1));
-                                array[i] = m[i] + k;
-                            }
-                            else
-                                array[i] = m[i] - k;
-                        }
-                    }
-
-                    Utils.Shuffle(array);
-                }
-            }
-            catch (Exception e) { Console.WriteLine(e); }
-        }
+        }   
 
         public void CheckCurrentCellValue()
         {

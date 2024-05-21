@@ -80,6 +80,44 @@ namespace TransportOptimizer.src.utils
             }
         }
 
+        /// <summary>
+        /// Populate 'array' with random numbers whose sum is 'x'
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="x"></param>
+        private static void RandomizeArray(int[] array, int x)
+        {
+            int avg = x / array.Length;
+
+            int[] m = Enumerable.Repeat(avg, array.Length).ToArray();
+
+            while (m.Sum() < x)
+                m[m.Length - 1]++;
+
+            int k;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i == (array.Length - 1))
+                {
+                    array[i] = 0;
+                    array[i] = x - array.Sum();
+                }
+                else
+                {
+                    if (i % 2 == 0)
+                    {
+                        k = rd.Next((int)(0.30 * m[i]), (int)((0.70 * m[i]) + 1));
+                        array[i] = m[i] + k;
+                    }
+                    else
+                        array[i] = m[i] - k;
+                }
+            }
+
+            Utils.Shuffle(array);
+        }
+
         public static List<int> CountVal(int[] array, int value)
         {
             var list = new List<int>();
