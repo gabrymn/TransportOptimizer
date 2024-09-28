@@ -85,7 +85,7 @@ namespace TransportOptimizer.src.utils
         /// </summary>
         /// <param name="array"></param>
         /// <param name="x"></param>
-        private static void RandomizeArray(int[] array, int x)
+        public static void RandomizeArray(int[] array, int x)
         {
             int avg = x / array.Length;
 
@@ -94,7 +94,8 @@ namespace TransportOptimizer.src.utils
             while (m.Sum() < x)
                 m[m.Length - 1]++;
 
-            int k;
+            // 0 is not a specific value for k, it could be anything, just to init the variable
+            int k = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -107,11 +108,12 @@ namespace TransportOptimizer.src.utils
                 {
                     if (i % 2 == 0)
                     {
-                        k = rd.Next((int)(0.30 * m[i]), (int)((0.70 * m[i]) + 1));
+                        k = rng.Next((int)(0.30 * m[i]), (int)((0.70 * m[i]) + 1));
                         array[i] = m[i] + k;
                     }
                     else
                         array[i] = m[i] - k;
+                        // The value of "k" is computed in the previous cycle of the loop.
                 }
             }
 

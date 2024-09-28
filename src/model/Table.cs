@@ -204,6 +204,8 @@ namespace TransportOptimizer.src.model
 
         public void Randomize(int min, int max)
         {
+            int multiplier = 0;
+
             try
             {
                 // Fill the table with random values that belong to the range [min, max]
@@ -228,6 +230,7 @@ namespace TransportOptimizer.src.model
                     multiplier = 10;
                 else
                     multiplier = 1;
+
                 int total_val = 0;
                 total_val += Math.Max(RowsCount, ColumnsCount) * 100;
                 total_val += rd.Next(1, 10) * (10 * multiplier);
