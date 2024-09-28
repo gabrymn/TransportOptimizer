@@ -11,6 +11,8 @@ namespace TransportOptimizer.src.utils
         public static readonly string[] TERMS = ["UP", "D", "Min", "Max"];
         public static readonly string[] METHODS = ["Northwest", "Leastcost", "Vogel", "Russell"];
         public static readonly string FASTER_METHOD = METHODS[3];
+        public static readonly int DEFAULT_TABLE_ROWS = 15;
+        public static readonly int DEFAULT_TABLE_COLUMNS = 15;
 
         public static readonly int MS_INTERVAL = 1;
 
@@ -33,7 +35,7 @@ namespace TransportOptimizer.src.utils
         public static readonly string WRONG_EXT_ERROR_MSG = "Only JSON files allowed, remove the extension to continue";
         public static readonly string PACKAGE_NOT_FOUND_MSG = "JSON package not found, check file path";
         public static readonly string LOST_DATA_MSG = "Due to an unknown error the data was lost";
-        public static readonly string INCONSISTENT_DATA_MSG = "INCONSISTENT DATA ERROR \n\nThe sum of the values in the last row and last column must be equal and match the value in the bottom-right cell";
+        public static readonly string INCONSISTENT_DATA_MSG = "INCONSISTENT DATA ERROR \n\nThe sum of the values in the last row and l must be equal and match the value in the bottom-right cell";
         public static readonly string ALL_CELLS_REQ_MSG = "Execution of this function requires that all cells are filled in";
     }
 }

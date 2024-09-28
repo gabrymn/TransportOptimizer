@@ -20,7 +20,7 @@ namespace TransportOptimizer.src.view
         public Main()
         {
             InitializeComponent();
-            table = new Table(15, 15, dataGridView1);
+            table = new Table(Const.DEFAULT_TABLE_ROWS, Const.DEFAULT_TABLE_COLUMNS, dataGridView1);
             CheckForIllegalCrossThreadCalls = true;
             MinimumSize = new Size(Width, 0);
             label7.Select();
