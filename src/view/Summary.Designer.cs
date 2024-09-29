@@ -141,7 +141,7 @@ namespace TransportOptimizer.src.view
             save0.Cursor = Cursors.Hand;
             save0.FlatStyle = FlatStyle.Flat;
             save0.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            save0.ForeColor = Color.Aqua;
+            save0.ForeColor = Color.GreenYellow;
             save0.Location = new Point(509, 415);
             save0.Margin = new Padding(2);
             save0.Name = "save0";

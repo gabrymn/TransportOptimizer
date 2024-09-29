@@ -37,9 +37,9 @@ namespace TransportOptimizer.src.view
         {
             timer.Tick += delegate
             {
-                InvokeControls(() => progressBar.Width += 3);
+                InvokeControls(() => progressBar.Width += 10);
 
-                if (progressBar.Width == 981)
+                if (progressBar.Width == 1500)
                 {
                     Thread.Sleep(delay);
                     timer.Stop();

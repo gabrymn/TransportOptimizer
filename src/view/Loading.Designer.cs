@@ -45,39 +45,39 @@ namespace TransportOptimizer.src.view
             label3.ForeColor = Color.Cyan;
             label3.Location = new Point(103, 304);
             label3.Name = "label3";
-            label3.Size = new Size(0, 25);
+            label3.Size = new Size(0, 31);
             label3.TabIndex = 6;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI Black", 50.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Aqua;
-            label1.Location = new Point(12, 96);
+            label1.Font = new Font("Segoe UI Light", 43.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(135, 163);
             label1.Name = "label1";
-            label1.Size = new Size(926, 127);
+            label1.Size = new Size(875, 128);
             label1.TabIndex = 9;
             label1.Text = "Transport Optimizer";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // progressBar
             // 
-            progressBar.BackColor = Color.Aqua;
-            progressBar.Location = new Point(-8, 452);
+            progressBar.BackColor = Color.GreenYellow;
+            progressBar.Location = new Point(-10, 546);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(958, 18);
+            progressBar.Size = new Size(1138, 10);
             progressBar.TabIndex = 15;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.RoyalBlue;
-            label2.Location = new Point(103, 281);
+            label2.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.LightSteelBlue;
+            label2.Location = new Point(630, 335);
             label2.Name = "label2";
-            label2.Size = new Size(542, 93);
+            label2.Size = new Size(215, 93);
             label2.TabIndex = 16;
             label2.Text = "Developed by";
             label2.TextAlign = ContentAlignment.MiddleRight;
@@ -85,7 +85,7 @@ namespace TransportOptimizer.src.view
             // panel1
             // 
             panel1.BackColor = Color.Gainsboro;
-            panel1.Location = new Point(33, 254);
+            panel1.Location = new Point(135, 313);
             panel1.Name = "panel1";
             panel1.Size = new Size(875, 1);
             panel1.TabIndex = 17;
@@ -94,21 +94,21 @@ namespace TransportOptimizer.src.view
             // 
             label4.Anchor = AnchorStyles.None;
             label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI Black", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.RoyalBlue;
-            label4.Location = new Point(632, 281);
+            label4.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.LightSteelBlue;
+            label4.Location = new Point(834, 335);
             label4.Name = "label4";
-            label4.Size = new Size(197, 93);
+            label4.Size = new Size(179, 93);
             label4.TabIndex = 18;
             label4.Text = "gabrymn";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // Loading
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(12, 12, 12);
-            ClientSize = new Size(950, 457);
+            ClientSize = new Size(1127, 551);
             Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(label2);

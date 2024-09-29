@@ -59,11 +59,11 @@ namespace TransportOptimizer.src.view.components
         private static void SetBackgroundStyle(this DataGridView dgv)
         {
             dgv.Rows.Cast<DataGridViewRow>().ToList().ForEach(r =>
-                { r.Cells[dgv.ColumnCount-1].Style.ForeColor = Color.Aqua; }
+                { r.Cells[dgv.ColumnCount-1].Style.ForeColor = Color.GreenYellow; }
             );
 
             dgv.Rows[dgv.RowCount-1].Cells.Cast<DataGridViewCell>().ToList().ForEach(c =>
-                { c.Style.ForeColor = Color.Aqua; }
+                { c.Style.ForeColor = Color.GreenYellow; }
             );
         }
 
@@ -98,11 +98,11 @@ namespace TransportOptimizer.src.view.components
             });
 
             dgv.Rows[dgv.RowCount-1].HeaderCell.Value = keyLast;
-            dgv.Rows[dgv.RowCount-1].HeaderCell.Style.ForeColor = Color.Aqua;
+            dgv.Rows[dgv.RowCount-1].HeaderCell.Style.ForeColor = Color.GreenYellow;
             dgv.Rows[dgv.RowCount-1].HeaderCell.Style.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_LAST);
 
             dgv.Columns[dgv.ColumnCount-1].HeaderText = keyLast;
-            dgv.Columns[dgv.ColumnCount-1].HeaderCell.Style.ForeColor = Color.Aqua;
+            dgv.Columns[dgv.ColumnCount-1].HeaderCell.Style.ForeColor = Color.GreenYellow;
             dgv.Columns[dgv.ColumnCount-1].HeaderCell.Style.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_LAST);
 
             dgv.Rows[dgv.RowCount-1].HeaderCell.Style.BackColor = Color.Black;

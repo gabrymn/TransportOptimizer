@@ -35,10 +35,10 @@ namespace TransportOptimizer.src.view
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             });
 
-            dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Aqua;
+            dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.GreenYellow;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.ForeColor = Color.Black;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionBackColor = Color.Black;
-            dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionForeColor = Color.Aqua;
+            dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionForeColor = Color.GreenYellow;
             dgv1.BorderStyle = BorderStyle.None;
 
             dgv1.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);

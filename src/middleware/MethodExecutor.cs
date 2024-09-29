@@ -49,6 +49,7 @@ namespace TransportOptimizer.src.middleware
                 {
                     UIT.Stop();
                     timer.Stop();
+
                     var elapsed = timer.ElapsedMilliseconds / 1000.00f;
 
                     dgv.Visible = false;

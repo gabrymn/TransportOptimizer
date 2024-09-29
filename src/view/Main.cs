@@ -20,7 +20,6 @@ namespace TransportOptimizer.src.view
 
             CheckForIllegalCrossThreadCalls = true;
             MinimumSize = new Size(Width, 0);
-            label7.Select();
         }
 
         private void Form1_Load(object sender, EventArgs e)
