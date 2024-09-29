@@ -1,36 +1,40 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Linq;
-using System.IO;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System.ComponentModel;
 using TransportOptimizer.src.model;
 using TransportOptimizer.src.utils;
+using TransportOptimizer.src.view.components;
 
 namespace TransportOptimizer.src.view
 {
     public partial class Summary : Form
     {
-        private readonly SummaryData[] array;
+        private readonly SummaryData[] output_data;
         private readonly string method;
-        public DGVData table;
         private SaveFileDialog sfd;
         private Main mainform;
 
-        public Summary(SummaryData[] array, string method, DGVData table, Main mainform, float elapsed, int iterations)
+        public Summary(SummaryData[] output_data, string method, Main mainform, float elapsed, int iterations)
         {
             InitializeComponent();
-            this.table = table;
+            
             this.method = method;
             this.mainform = mainform;
-            SetSFD();
-            this.array = array;
-            DGVData.AddRows(dgv1, array.Length);
-            
-            dgv1.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => { 
-                column.SortMode = DataGridViewColumnSortMode.NotSortable; 
+            this.output_data = output_data;
+
+            InitSaveFileDialog();
+            InitDGVFormatAndStyle();
+
+            this.Text += " (" + elapsed.ToString() + " seconds; ";
+            this.Text += iterations.ToString() + " iterations)";
+        }
+
+        private void InitDGVFormatAndStyle()
+        {
+            dgv1.AddRows(output_data.Length);
+
+            dgv1.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             });
-            
+
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Aqua;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.ForeColor = Color.Black;
             dgv1.Rows[dgv1.Rows.Count - 1].DefaultCellStyle.SelectionBackColor = Color.Black;
@@ -38,12 +42,9 @@ namespace TransportOptimizer.src.view
             dgv1.BorderStyle = BorderStyle.None;
 
             dgv1.Font = new Font(Const.CELLS_FONT_NAME, Const.CELLS_FONT_SIZE, Const.FONT_STYLE_STD);
-
-            this.Text += " (" + elapsed.ToString() + " seconds; ";
-            this.Text += iterations.ToString() + " iterations)";
         }
 
-        private void SetSFD()
+        private void InitSaveFileDialog()
         {
             sfd = new SaveFileDialog();
             sfd.Filter = Const.DEFAULT_OUTPUT_FILE_EXT_FILTER;
@@ -79,12 +80,12 @@ namespace TransportOptimizer.src.view
         {
             int i;
 
-            for (i = 0; i < array.Length; i++)
+            for (i = 0; i < output_data.Length; i++)
             {
-                dgv1.Rows[i].Cells[0].Value = array[i].ID;
-                dgv1.Rows[i].Cells[1].Value = array[i].Quantity;
-                dgv1.Rows[i].Cells[2].Value = array[i].FromTo;
-                dgv1.Rows[i].Cells[3].Value = array[i].PriceToString();
+                dgv1.Rows[i].Cells[0].Value = output_data[i].ID;
+                dgv1.Rows[i].Cells[1].Value = output_data[i].Quantity;
+                dgv1.Rows[i].Cells[2].Value = output_data[i].FromTo;
+                dgv1.Rows[i].Cells[3].Value = output_data[i].PriceToString();
             }
         }
 
@@ -98,7 +99,7 @@ namespace TransportOptimizer.src.view
         {
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                SummaryData.ToJsonFile(array: array, path: sfd.FileName);
+                SummaryData.ToJsonFile(output_data, sfd.FileName);
 
                 mainform.ResetDataGridView();
                 Close();

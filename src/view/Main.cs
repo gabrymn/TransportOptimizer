@@ -198,7 +198,7 @@ namespace TransportOptimizer.src.view
 
                 string chosen_method = methods.SelectedItem.ToString();
 
-                InvokeUpdateControls(() => Method.Run(chosen_method, dgvd, dataGridView1, this));
+                InvokeUpdateControls(() => MethodExecutor.Run(chosen_method, dgvd, dataGridView1, this));
             }
         }
 

@@ -13,7 +13,7 @@ namespace TransportOptimizer.src.algorithm
     /// </summary>
     internal static class NorthwestCorner
     {
-        public static bool Run(ref List<SummaryData> list, ref DGVData table)
+        public static bool Run(ref DGVData table, ref List<SummaryData> list)
         {
             var obj = new SummaryData();
 

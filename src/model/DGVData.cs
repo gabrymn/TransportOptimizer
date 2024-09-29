@@ -82,12 +82,6 @@ namespace TransportOptimizer.src.model
             }
         }
 
-        public static void AddRows(DataGridView dgv, int n)
-        {
-            for (int i = 0; i < n; i++)
-                dgv.Rows.Add(new DataGridViewRow());
-        }
-
         /// <summary>
         /// returns the min value of the table and its <X,Y> coordinates from the current data
         /// </summary>

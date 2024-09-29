@@ -108,5 +108,11 @@ namespace TransportOptimizer.src.view.components
             dgv.Rows[dgv.RowCount-1].HeaderCell.Style.BackColor = Color.Black;
             dgv.Columns[dgv.ColumnCount-1].HeaderCell.Style.BackColor = Color.Black;
         }
+
+        public static void AddRows(this DataGridView dgv, int n)
+        {
+            for (int i = 0; i < n; i++)
+                dgv.Rows.Add(new DataGridViewRow());
+        }
     }
 }

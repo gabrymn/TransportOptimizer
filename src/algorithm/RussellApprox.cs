@@ -15,7 +15,7 @@ namespace TransportOptimizer.src.algorithm
     /// </summary>
     internal static class RussellApprox
     {
-        public static bool Run(ref List<SummaryData> list, ref DGVData table)
+        public static bool Run(ref DGVData table, ref List<SummaryData> list)
         {
             SummaryData obj = new SummaryData();
 

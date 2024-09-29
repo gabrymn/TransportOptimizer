@@ -10,7 +10,6 @@ namespace TransportOptimizer.src.utils
     {
         public static readonly string[] TERMS = ["UP", "D", "Min", "Max"];
         public static readonly string[] METHODS = ["Northwest", "Leastcost", "Vogel", "Russell"];
-        public static readonly string FASTER_METHOD = METHODS[3];
         public static readonly int DEFAULT_TABLE_ROWS = 15;
         public static readonly int DEFAULT_TABLE_COLUMNS = 15;
 
