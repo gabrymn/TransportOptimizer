@@ -1,15 +1,21 @@
-﻿using TransportOptimizer.src.algo;
+﻿using TransportOptimizer.src.algorithm;
 using TransportOptimizer.src.model;
 using TransportOptimizer.src.utils;
 using TransportOptimizer.src.view;
 
 namespace TransportOptimizer.src.middleware
 {
-    internal class Method
+    /// <summary>
+    /// This class provides a framework for executing various methods on a DataGridView, specifically 
+    /// for processing data related to `DGVData`. It allows for the selection and invocation of 
+    /// algorithms to manipulate or analyze data in the `DataGridView`. Tthe results are collected 
+    /// and displayed in a summary dialog once processing is complete. 
+    /// </summary>
+    abstract class Method
     {
         public delegate bool Runnable(ref List<SummaryData> output_data, ref DGVData table);
 
-        public static bool Run(string? method_name, DGVData dgvd, DataGridView dgv, Main mainform)
+        public static bool Run(string? method_name, DGVData table, DataGridView dgv, Main mainform)
         {
             if (method_name == null || Const.METHODS.Contains(method_name) == false)
                 method_name = Const.FASTER_METHOD;
@@ -23,8 +29,8 @@ namespace TransportOptimizer.src.middleware
             // used to measure the method process time is seconds
             var timer = new System.Diagnostics.Stopwatch();
 
-            // true = keep going
-            // false = method process is over
+            // method_status = true => keep going
+            // method_status = false => method process is over
             bool method_status = true;
 
             // Method iterations
@@ -37,7 +43,7 @@ namespace TransportOptimizer.src.middleware
             {
                 iterations++;
 
-                method_status = method(ref output_data, ref dgvd);
+                method_status = method(ref output_data, ref table);
 
                 if (method_status == false)
                 {
@@ -47,7 +53,7 @@ namespace TransportOptimizer.src.middleware
                     
                     dgv.Visible = false;
 
-                    new Summary(output_data.ToArray(), method_name.ToLower(), dgvd, mainform, elapsed, iterations).ShowDialog();
+                    new Summary(output_data.ToArray(), method_name.ToLower(), table, mainform, elapsed, iterations).ShowDialog();
                 }
             };
 

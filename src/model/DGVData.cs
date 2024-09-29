@@ -176,8 +176,8 @@ namespace TransportOptimizer.src.model
                 int[] last_row = new int[ColumnsCount];
                 int[] last_column = new int[RowsCount];
 
-                Utils.RandomizeArray(last_row, total_val);
-                Utils.RandomizeArray(last_column, total_val);
+                last_row.Randomize(total_val);
+                last_column.Randomize(total_val);
 
                 for (int i = 0; i < last_column.Length; i++)
                     SetAt(i, ColumnsCount, last_column[i]);
@@ -190,21 +190,31 @@ namespace TransportOptimizer.src.model
             catch (ArgumentOutOfRangeException e) { Console.WriteLine(e); }
         }
 
-        public void CheckCurrentCellValue()
+        /// <summary>
+        /// Validates the cell value inserted in the DataGridView.
+        /// </summary>
+        /// <remarks>
+        /// This method checks if the cell value is a valid integer, 
+        /// is not less than 1, and does not start with a zero. 
+        /// If any of these conditions are not met, it clears the cell value 
+        /// and plays an error sound. If the cell value has leading or 
+        /// trailing whitespace, it trims the value before saving it back.
+        /// </remarks>
+        public void CheckCellValueInserted()
         {
             try
             {
-                string t = dgv.CurrentCell.Value.ToString();
+                string c = dgv.CurrentCell.Value.ToString();
 
-                if ((t != string.Empty && !Utils.IsN(t)) || Utils.LessT1(t) || t.StartsWith("0"))
+                if ((c != string.Empty && c.IsInteger() == false) || c.LessThan1() || c.StartsWith("0"))
                 {
                     System.Media.SystemSounds.Hand.Play();
                     dgv.CurrentCell.Value = string.Empty;
                 }
                 else
                 {
-                    if (t.StartsWith(" ") || t.EndsWith(" "))
-                        dgv.CurrentCell.Value = t.Trim();
+                    if (c.StartsWith(" ") || c.EndsWith(" "))
+                        dgv.CurrentCell.Value = c.Trim();
                 }
 
             }

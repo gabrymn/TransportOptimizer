@@ -1,5 +1,6 @@
 ﻿using TransportOptimizer.src.utils;
 using TransportOptimizer.src.model;
+using TransportOptimizer.src.middleware;
 using TransportOptimizer.src.view.components;
 
 namespace TransportOptimizer.src.view
@@ -37,7 +38,7 @@ namespace TransportOptimizer.src.view
             methods.SelectedItem = methods.Items[0];
         }
 
-        public void SetTextBoxs(System.Windows.Forms.TextBox[] tbs)
+        public void SetTextBoxs(TextBox[] tbs)
         {
             int tag = 0;
 
@@ -63,7 +64,7 @@ namespace TransportOptimizer.src.view
 
         public void AddText(object sender, EventArgs e)
         {
-            System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
+            TextBox tb = (TextBox)sender;
 
             if (string.IsNullOrWhiteSpace(tb.Text))
             {
@@ -80,7 +81,7 @@ namespace TransportOptimizer.src.view
                 return;
             }
 
-            if (!(Utils.SkipCheck(textBox1.Text, textBox2.Text, Const.TERMS)))
+            if ((Const.TERMS.Contains(textBox1.Text) || Const.TERMS.Contains(textBox2.Text)) == false)
             {
                 if (textBox1.Text != string.Empty && textBox2.Text != string.Empty)
                 {
@@ -101,15 +102,15 @@ namespace TransportOptimizer.src.view
 
         private void textBoxRC_TextChanged(object sender, EventArgs e)
         {
-            System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
+            TextBox tb = (TextBox)sender;
 
-            if (!Const.TERMS.Contains(tb.Text))
-                Utils.ValidateTextBox(tb);
+            if (Const.TERMS.Contains(tb.Text) == false)
+                tb.ValidateText();
         }
 
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            dgvd.CheckCurrentCellValue();
+            dgvd.CheckCellValueInserted();
         }
 
         private void btnExeRd_Click(object sender, EventArgs e)
@@ -120,7 +121,7 @@ namespace TransportOptimizer.src.view
                 return;
             }
 
-            if (!Utils.SkipCheck(tbMinVal.Text, tbMaxVal.Text, Const.TERMS))
+            if ((Const.TERMS.Contains(textBox1.Text) || Const.TERMS.Contains(textBox2.Text)) == false)
             {
                 var min = int.Parse(tbMinVal.Text);
                 var max = int.Parse(tbMaxVal.Text);
@@ -130,9 +131,14 @@ namespace TransportOptimizer.src.view
                 else
                 {
                     System.Media.SystemSounds.Hand.Play();
+                    
                     var a = tbMinVal.Text;
                     var b = tbMaxVal.Text;
-                    Utils.Swap(ref a, ref b);
+
+                    var temp = a;
+                    a = b;
+                    b = temp;
+
                     tbMinVal.Text = a;
                     tbMaxVal.Text = b;
                 }
@@ -185,11 +191,14 @@ namespace TransportOptimizer.src.view
                 MethodIsRunning = true;
 
                 dataGridView1.ReadOnly = true;
-                
-                Buffer = Tuple.Create(dgvd.RowsCount, dgvd.ColumnsCount, dgvd.GetData());
-                string method = methods.SelectedItem.ToString();
 
-                InvokeUpdateControls(() => middleware.Method.Run(method, dgvd, dataGridView1, this));
+                // In order to restore the actual state of the table once the method is done,
+                // we need to create a backup, which is stored in this variable named "Buffer"
+                Buffer = Tuple.Create(dgvd.RowsCount, dgvd.ColumnsCount, dgvd.GetData());
+
+                string chosen_method = methods.SelectedItem.ToString();
+
+                InvokeUpdateControls(() => Method.Run(chosen_method, dgvd, dataGridView1, this));
             }
         }
 

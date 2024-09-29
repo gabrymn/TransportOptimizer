@@ -25,7 +25,7 @@ namespace TransportOptimizer.src.view
             this.mainform = mainform;
             SetSFD();
             this.array = array;
-            Table.AddRows(dgv1, array.Length);
+            DGVData.AddRows(dgv1, array.Length);
             
             dgv1.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => { 
                 column.SortMode = DataGridViewColumnSortMode.NotSortable; 

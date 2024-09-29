@@ -73,13 +73,13 @@ namespace TransportOptimizer.src.model
         {
             int sum = 0;
 
-            if (Utils.EqualsICase(Const.ATTR_QNT_NAME, attribute_name))
+            if (Const.ATTR_QNT_NAME.EqualsICase(attribute_name))
             {
                 for (int i = 0; i < array.Length; i++)
                     sum += array[i].Quantity;
             }
 
-            else if (Utils.EqualsICase(Const.ATTR_PRICE_NAME, attribute_name))
+            else if (Const.ATTR_PRICE_NAME.EqualsICase(attribute_name))
             {
                 for (int i = 0; i < array.Length; i++)
                     sum += array[i].Price;
