@@ -29,10 +29,10 @@ namespace TransportOptimizer.src.view
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label7 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -65,11 +65,11 @@ namespace TransportOptimizer.src.view
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(11, 22);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.MinimumSize = new Size(888, 60);
+            label7.Location = new Point(16, 37);
+            label7.Margin = new Padding(6, 0, 6, 0);
+            label7.MinimumSize = new Size(1269, 100);
             label7.Name = "label7";
-            label7.Size = new Size(1082, 60);
+            label7.Size = new Size(1546, 100);
             label7.TabIndex = 9;
             label7.Text = "Transport Optimizer";
             label7.TextAlign = ContentAlignment.MiddleCenter;
@@ -77,11 +77,11 @@ namespace TransportOptimizer.src.view
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(214, 62);
-            textBox1.Margin = new Padding(4);
+            textBox1.Location = new Point(306, 103);
+            textBox1.Margin = new Padding(6, 7, 6, 7);
             textBox1.MaxLength = 2;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(78, 29);
+            textBox1.Size = new Size(110, 39);
             textBox1.TabIndex = 1;
             textBox1.TextAlign = HorizontalAlignment.Center;
             textBox1.TextChanged += textBoxRC_TextChanged;
@@ -89,11 +89,11 @@ namespace TransportOptimizer.src.view
             // textBox2
             // 
             textBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(214, 99);
-            textBox2.Margin = new Padding(4);
+            textBox2.Location = new Point(306, 165);
+            textBox2.Margin = new Padding(6, 7, 6, 7);
             textBox2.MaxLength = 2;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(78, 29);
+            textBox2.Size = new Size(110, 39);
             textBox2.TabIndex = 2;
             textBox2.TextAlign = HorizontalAlignment.Center;
             textBox2.TextChanged += textBoxRC_TextChanged;
@@ -103,10 +103,10 @@ namespace TransportOptimizer.src.view
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(74, 108);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(106, 180);
+            label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(110, 21);
+            label2.Size = new Size(161, 32);
             label2.TabIndex = 17;
             label2.Text = "Destinations";
             // 
@@ -115,10 +115,10 @@ namespace TransportOptimizer.src.view
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Cyan;
-            label1.Location = new Point(101, 17);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(144, 28);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(156, 25);
+            label1.Size = new Size(236, 40);
             label1.TabIndex = 21;
             label1.Text = "Table Structure";
             // 
@@ -127,10 +127,10 @@ namespace TransportOptimizer.src.view
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(46, 68);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(66, 113);
+            label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
-            label4.Size = new Size(143, 21);
+            label4.Size = new Size(213, 32);
             label4.TabIndex = 18;
             label4.Text = "Production Units";
             // 
@@ -141,10 +141,10 @@ namespace TransportOptimizer.src.view
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Black", 11.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(52, 159);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(74, 265);
+            button1.Margin = new Padding(6, 7, 6, 7);
             button1.Name = "button1";
-            button1.Size = new Size(242, 34);
+            button1.Size = new Size(346, 57);
             button1.TabIndex = 3;
             button1.Text = "Set";
             button1.UseVisualStyleBackColor = false;
@@ -158,10 +158,10 @@ namespace TransportOptimizer.src.view
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Black", 11.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(55, 159);
-            button3.Margin = new Padding(4);
+            button3.Location = new Point(79, 265);
+            button3.Margin = new Padding(6, 7, 6, 7);
             button3.Name = "button3";
-            button3.Size = new Size(242, 34);
+            button3.Size = new Size(346, 57);
             button3.TabIndex = 34;
             button3.Text = "Run";
             button3.UseVisualStyleBackColor = false;
@@ -176,11 +176,11 @@ namespace TransportOptimizer.src.view
             panel4.Controls.Add(label2);
             panel4.Controls.Add(textBox2);
             panel4.Controls.Add(textBox1);
-            panel4.Location = new Point(25, 98);
-            panel4.Margin = new Padding(3, 2, 3, 2);
-            panel4.MinimumSize = new Size(346, 219);
+            panel4.Location = new Point(36, 163);
+            panel4.Margin = new Padding(4, 3, 4, 3);
+            panel4.MinimumSize = new Size(494, 365);
             panel4.Name = "panel4";
-            panel4.Size = new Size(346, 219);
+            panel4.Size = new Size(494, 365);
             panel4.TabIndex = 19;
             // 
             // dataGridView1
@@ -189,50 +189,50 @@ namespace TransportOptimizer.src.view
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(44, 48, 52);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 48, 52);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = Color.FromArgb(34, 31, 46);
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.Black;
-            dataGridViewCellStyle6.Font = new Font("Yu Gothic UI", 19.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Silver;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(63, 63, 65);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Black;
+            dataGridViewCellStyle2.Font = new Font("Yu Gothic UI", 19.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Silver;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeight = 50;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle7.Font = new Font("Yu Gothic UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.Font = new Font("Yu Gothic UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(50, 56, 62);
-            dataGridView1.Location = new Point(25, 339);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(36, 565);
+            dataGridView1.Margin = new Padding(4, 3, 4, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(15, 16, 18);
-            dataGridViewCellStyle8.Font = new Font("Yu Gothic UI", 19.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Silver;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(63, 63, 65);
-            dataGridViewCellStyle8.SelectionForeColor = Color.White;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(15, 16, 18);
+            dataGridViewCellStyle4.Font = new Font("Yu Gothic UI", 19.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Silver;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersWidth = 80;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView1.RowTemplate.Height = 50;
             dataGridView1.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridView1.Size = new Size(1053, 329);
+            dataGridView1.Size = new Size(1504, 428);
             dataGridView1.TabIndex = 37;
             dataGridView1.CellValidated += dataGridView1_CellValidated;
             dataGridView1.KeyPress += dataGridView1_KeyPress;
@@ -243,10 +243,10 @@ namespace TransportOptimizer.src.view
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Cyan;
-            label5.Location = new Point(126, 17);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(180, 28);
+            label5.Margin = new Padding(6, 0, 6, 0);
             label5.Name = "label5";
-            label5.Size = new Size(113, 25);
+            label5.Size = new Size(169, 40);
             label5.TabIndex = 24;
             label5.Text = "Resolution";
             // 
@@ -258,11 +258,11 @@ namespace TransportOptimizer.src.view
             panel2.Controls.Add(methods);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(button3);
-            panel2.Location = new Point(732, 98);
-            panel2.Margin = new Padding(3, 2, 3, 2);
-            panel2.MinimumSize = new Size(346, 219);
+            panel2.Location = new Point(1046, 163);
+            panel2.Margin = new Padding(4, 3, 4, 3);
+            panel2.MinimumSize = new Size(494, 365);
             panel2.Name = "panel2";
-            panel2.Size = new Size(346, 219);
+            panel2.Size = new Size(494, 365);
             panel2.TabIndex = 39;
             // 
             // label6
@@ -270,10 +270,10 @@ namespace TransportOptimizer.src.view
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(55, 70);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(79, 117);
+            label6.Margin = new Padding(6, 0, 6, 0);
             label6.Name = "label6";
-            label6.Size = new Size(135, 21);
+            label6.Size = new Size(201, 32);
             label6.TabIndex = 43;
             label6.Text = "Select a method";
             // 
@@ -287,11 +287,11 @@ namespace TransportOptimizer.src.view
             methods.ForeColor = Color.Black;
             methods.FormattingEnabled = true;
             methods.IntegralHeight = false;
-            methods.ItemHeight = 21;
-            methods.Location = new Point(55, 100);
-            methods.Margin = new Padding(3, 2, 3, 2);
+            methods.ItemHeight = 32;
+            methods.Location = new Point(79, 167);
+            methods.Margin = new Padding(4, 3, 4, 3);
             methods.Name = "methods";
-            methods.Size = new Size(242, 29);
+            methods.Size = new Size(344, 40);
             methods.TabIndex = 42;
             // 
             // button4
@@ -302,10 +302,10 @@ namespace TransportOptimizer.src.view
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI Black", 11.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(32, 159);
-            button4.Margin = new Padding(4);
+            button4.Location = new Point(46, 265);
+            button4.Margin = new Padding(6, 7, 6, 7);
             button4.Name = "button4";
-            button4.Size = new Size(280, 34);
+            button4.Size = new Size(400, 57);
             button4.TabIndex = 15;
             button4.Text = "Clear";
             button4.UseVisualStyleBackColor = false;
@@ -315,11 +315,11 @@ namespace TransportOptimizer.src.view
             // 
             tbMaxVal.Anchor = AnchorStyles.Top;
             tbMaxVal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbMaxVal.Location = new Point(174, 62);
-            tbMaxVal.Margin = new Padding(4);
+            tbMaxVal.Location = new Point(249, 103);
+            tbMaxVal.Margin = new Padding(6, 7, 6, 7);
             tbMaxVal.MaxLength = 5;
             tbMaxVal.Name = "tbMaxVal";
-            tbMaxVal.Size = new Size(138, 29);
+            tbMaxVal.Size = new Size(195, 39);
             tbMaxVal.TabIndex = 7;
             tbMaxVal.TextAlign = HorizontalAlignment.Center;
             tbMaxVal.TextChanged += textBoxRC_TextChanged;
@@ -332,10 +332,10 @@ namespace TransportOptimizer.src.view
             btnExeRd.FlatStyle = FlatStyle.Flat;
             btnExeRd.Font = new Font("Segoe UI Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExeRd.ForeColor = Color.White;
-            btnExeRd.Location = new Point(32, 100);
-            btnExeRd.Margin = new Padding(4);
+            btnExeRd.Location = new Point(46, 167);
+            btnExeRd.Margin = new Padding(6, 7, 6, 7);
             btnExeRd.Name = "btnExeRd";
-            btnExeRd.Size = new Size(280, 35);
+            btnExeRd.Size = new Size(400, 58);
             btnExeRd.TabIndex = 11;
             btnExeRd.Text = "Generate";
             btnExeRd.UseVisualStyleBackColor = false;
@@ -345,11 +345,11 @@ namespace TransportOptimizer.src.view
             // 
             tbMinVal.Anchor = AnchorStyles.Top;
             tbMinVal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbMinVal.Location = new Point(32, 62);
-            tbMinVal.Margin = new Padding(4);
+            tbMinVal.Location = new Point(46, 103);
+            tbMinVal.Margin = new Padding(6, 7, 6, 7);
             tbMinVal.MaxLength = 5;
             tbMinVal.Name = "tbMinVal";
-            tbMinVal.Size = new Size(140, 29);
+            tbMinVal.Size = new Size(198, 39);
             tbMinVal.TabIndex = 6;
             tbMinVal.TextAlign = HorizontalAlignment.Center;
             tbMinVal.TextChanged += textBoxRC_TextChanged;
@@ -360,10 +360,10 @@ namespace TransportOptimizer.src.view
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Cyan;
-            label3.Location = new Point(95, 17);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(136, 28);
+            label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
-            label3.Size = new Size(175, 25);
+            label3.Size = new Size(263, 40);
             label3.TabIndex = 23;
             label3.Text = "Data Managment";
             // 
@@ -376,25 +376,25 @@ namespace TransportOptimizer.src.view
             panel1.Controls.Add(btnExeRd);
             panel1.Controls.Add(tbMaxVal);
             panel1.Controls.Add(button4);
-            panel1.Location = new Point(377, 98);
-            panel1.Margin = new Padding(3, 2, 3, 2);
-            panel1.MinimumSize = new Size(350, 219);
+            panel1.Location = new Point(539, 163);
+            panel1.Margin = new Padding(4, 3, 4, 3);
+            panel1.MinimumSize = new Size(500, 365);
             panel1.Name = "panel1";
-            panel1.Size = new Size(350, 219);
+            panel1.Size = new Size(500, 365);
             panel1.TabIndex = 38;
             // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(54, 51, 66);
-            ClientSize = new Size(1103, 702);
+            ClientSize = new Size(1576, 1050);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(dataGridView1);
             Controls.Add(panel4);
             Controls.Add(label7);
-            Margin = new Padding(4);
+            Margin = new Padding(6, 7, 6, 7);
             Name = "Main";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;

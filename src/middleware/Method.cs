@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using TransportOptimizer.src.algo;
+﻿using TransportOptimizer.src.algo;
 using TransportOptimizer.src.model;
 using TransportOptimizer.src.utils;
 using TransportOptimizer.src.view;
@@ -13,9 +7,9 @@ namespace TransportOptimizer.src.middleware
 {
     internal class Method
     {
-        public delegate bool Runnable(ref List<SummaryData> output_data, ref Table table);
+        public delegate bool Runnable(ref List<SummaryData> output_data, ref DGVData table);
 
-        public static bool Run(string? method_name, Table table, Main mainform)
+        public static bool Run(string? method_name, DGVData dgvd, DataGridView dgv, Main mainform)
         {
             if (method_name == null || Const.METHODS.Contains(method_name) == false)
                 method_name = Const.FASTER_METHOD;
@@ -43,14 +37,17 @@ namespace TransportOptimizer.src.middleware
             {
                 iterations++;
 
-                method_status = method(ref output_data, ref table);
+                method_status = method(ref output_data, ref dgvd);
 
                 if (method_status == false)
                 {
                     UIT.Stop();
                     timer.Stop();
                     var elapsed = timer.ElapsedMilliseconds / 1000.00f;
-                    new Summary(output_data.ToArray(), method_name.ToLower(), table, mainform, elapsed, iterations).ShowDialog();
+                    
+                    dgv.Visible = false;
+
+                    new Summary(output_data.ToArray(), method_name.ToLower(), dgvd, mainform, elapsed, iterations).ShowDialog();
                 }
             };
 

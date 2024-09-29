@@ -13,7 +13,7 @@ namespace TransportOptimizer.src.algo
     /// </summary>
     internal static class NorthwestCorner
     {
-        public static bool Run(ref List<SummaryData> list, ref Table table)
+        public static bool Run(ref List<SummaryData> list, ref DGVData table)
         {
             var obj = new SummaryData();
 
@@ -70,8 +70,6 @@ namespace TransportOptimizer.src.algo
                     );
 
                     list.Add(sum);
-
-                    table.VisibleStatus(false);
 
                     return false;
                 }

@@ -13,7 +13,7 @@ namespace TransportOptimizer.src.algo
     /// </summary>
     internal class LeastCost
     {
-        public static bool Run(ref List<SummaryData> list, ref Table table)
+        public static bool Run(ref List<SummaryData> list, ref DGVData table)
         {
             var obj = new SummaryData();
 
@@ -22,7 +22,7 @@ namespace TransportOptimizer.src.algo
                 if (table.RowsCount > 1 || table.ColumnsCount > 1)
                 {
                     bool remove_column = false;
-                    var minCell = table.Min;
+                    var minCell = table.GetMin();
                     int val_r = table.GetAt(minCell.RowIndex, table.ColumnsCount);
                     int val_c = table.GetAt(table.RowsCount, minCell.ColumnIndex);
 
@@ -72,8 +72,7 @@ namespace TransportOptimizer.src.algo
                     );
                     
                     list.Add(sum);
-                    table.VisibleStatus(false);
-                    
+
                     return false;
                 }
                 return true;

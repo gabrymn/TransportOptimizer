@@ -13,11 +13,11 @@ namespace TransportOptimizer.src.view
     {
         private readonly SummaryData[] array;
         private readonly string method;
-        public Table table;
+        public DGVData table;
         private SaveFileDialog sfd;
         private Main mainform;
 
-        public Summary(SummaryData[] array, string method, Table table, Main mainform, float elapsed, int iterations)
+        public Summary(SummaryData[] array, string method, DGVData table, Main mainform, float elapsed, int iterations)
         {
             InitializeComponent();
             this.table = table;

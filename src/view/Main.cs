@@ -1,18 +1,12 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Reflection.Emit;
-using TransportOptimizer.src.utils;
+﻿using TransportOptimizer.src.utils;
 using TransportOptimizer.src.model;
+using TransportOptimizer.src.view.components;
 
 namespace TransportOptimizer.src.view
 {
     public partial class Main : Form
     {
-        private Table table;
+        private DGVData dgvd;
         private delegate void UpdateControlsDelegate();
         private dynamic Buffer;
         private bool MethodIsRunning;
@@ -20,7 +14,9 @@ namespace TransportOptimizer.src.view
         public Main()
         {
             InitializeComponent();
-            table = new Table(Const.DEFAULT_TABLE_ROWS, Const.DEFAULT_TABLE_COLUMNS, dataGridView1);
+
+            dgvd = new DGVData(Const.DEFAULT_TABLE_ROWS, Const.DEFAULT_TABLE_COLUMNS, dataGridView1);
+
             CheckForIllegalCrossThreadCalls = true;
             MinimumSize = new Size(Width, 0);
             label7.Select();
@@ -28,7 +24,8 @@ namespace TransportOptimizer.src.view
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            table.Enable();
+            dataGridView1.SetVisualElements(Const.DEFAULT_TABLE_ROWS, Const.DEFAULT_TABLE_COLUMNS);
+
             SetTextBoxs([textBox1, textBox2, tbMinVal, tbMaxVal]);
             SetMSComboBox();
         }
@@ -46,7 +43,7 @@ namespace TransportOptimizer.src.view
 
             foreach (var tb in tbs)
             {
-                tb.Tag = tag; 
+                tb.Tag = tag;
                 tag++;
                 tb.Text = Const.TERMS[(int)tb.Tag];
                 tb.ForeColor = Color.Silver;
@@ -86,10 +83,19 @@ namespace TransportOptimizer.src.view
             if (!(Utils.SkipCheck(textBox1.Text, textBox2.Text, Const.TERMS)))
             {
                 if (textBox1.Text != string.Empty && textBox2.Text != string.Empty)
-                    if (table.RowsCount != int.Parse(textBox1.Text) || table.ColumnsCount != int.Parse(textBox2.Text))
-                        table = new Table(int.Parse(textBox1.Text), int.Parse(textBox2.Text), dataGridView1, true);
+                {
+                    if (dgvd.RowsCount != int.Parse(textBox1.Text) || dgvd.ColumnsCount != int.Parse(textBox2.Text))
+                    {
+                        int newRowsCount = int.Parse(textBox1.Text);
+                        int newColumnsCount = int.Parse(textBox2.Text);
+
+                        dgvd = new DGVData(newRowsCount, newColumnsCount, dataGridView1);
+                        dataGridView1.SetVisualElements(newRowsCount, newColumnsCount);
+                    }
+                }
+
             }
-            else 
+            else
                 System.Media.SystemSounds.Hand.Play();
         }
 
@@ -103,7 +109,7 @@ namespace TransportOptimizer.src.view
 
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            table.CheckCurrentCellValue();
+            dgvd.CheckCurrentCellValue();
         }
 
         private void btnExeRd_Click(object sender, EventArgs e)
@@ -120,13 +126,13 @@ namespace TransportOptimizer.src.view
                 var max = int.Parse(tbMaxVal.Text);
 
                 if (min <= max)
-                    table.Randomize(min, max);
+                    dgvd.Randomize(min, max);
                 else
                 {
                     System.Media.SystemSounds.Hand.Play();
                     var a = tbMinVal.Text;
                     var b = tbMaxVal.Text;
-                    Utils.Swap<string>(ref a, ref b);
+                    Utils.Swap(ref a, ref b);
                     tbMinVal.Text = a;
                     tbMaxVal.Text = b;
                 }
@@ -141,7 +147,8 @@ namespace TransportOptimizer.src.view
                 System.Media.SystemSounds.Hand.Play();
                 return;
             }
-            table.Clear();
+
+            dgvd.Clear();
         }
 
         /// <summary>
@@ -163,12 +170,12 @@ namespace TransportOptimizer.src.view
                 return;
             }
 
-            if (table.IsFull() == false)
+            if (dgvd.IsFull() == false)
             {
                 System.Media.SystemSounds.Hand.Play();
                 MessageBox.Show(Const.ALL_CELLS_REQ_MSG);
             }
-            else if (table.DataIsConsistent() == false)
+            else if (dgvd.DataIsConsistent() == false)
             {
                 System.Media.SystemSounds.Hand.Play();
                 MessageBox.Show(Const.INCONSISTENT_DATA_MSG);
@@ -176,29 +183,40 @@ namespace TransportOptimizer.src.view
             else
             {
                 MethodIsRunning = true;
-                table.ReadOnly(true);
-                Buffer = Tuple.Create(table.RowsCount, table.ColumnsCount, table.GetData());
+
+                dataGridView1.ReadOnly = true;
+                
+                Buffer = Tuple.Create(dgvd.RowsCount, dgvd.ColumnsCount, dgvd.GetData());
                 string method = methods.SelectedItem.ToString();
 
-                InvokeUpdateControls(() => middleware.Method.Run(method, table, this));
+                InvokeUpdateControls(() => middleware.Method.Run(method, dgvd, dataGridView1, this));
             }
         }
 
         public void ResetDataGridView()
         {
-            table.VisibleStatus(true);
+            dataGridView1.Visible = true;
 
             try
             {
-                table = new Table(Buffer.Item1, Buffer.Item2, dataGridView1, Buffer.Item3, true);
-                table.ReadOnly(false);
+                int newRowsCount = Buffer.Item1;
+                int newColumnsCount = Buffer.Item2;
+                int[,] previousDataSet = Buffer.Item3;
+
+                dgvd = new DGVData(newRowsCount, newColumnsCount, dataGridView1);
+                dataGridView1.SetVisualElements(newRowsCount, newColumnsCount);
+                dgvd.SetData(previousDataSet);
+
+                dataGridView1.ReadOnly = false;
                 MethodIsRunning = false;
             }
             catch (Exception e)
             {
                 MessageBox.Show(Const.LOST_DATA_MSG);
                 Console.WriteLine(e);
-                table = new Table(15, 15, dataGridView1, true);
+
+                dgvd = new DGVData(Const.DEFAULT_TABLE_ROWS, Const.DEFAULT_TABLE_COLUMNS, dataGridView1);
+                dataGridView1.SetVisualElements(Const.DEFAULT_TABLE_ROWS, Const.DEFAULT_TABLE_COLUMNS);
             }
             //Task.Run(ResetBuffer);
         }
@@ -227,9 +245,9 @@ namespace TransportOptimizer.src.view
                         cell.Value = string.Empty;
                 }
             }
-            catch (Exception e) 
-            { 
-                Console.WriteLine(e); 
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
     }

@@ -13,7 +13,7 @@ namespace TransportOptimizer.src.algo
     /// </summary>
     internal class VogelApprox
     {
-        public static bool Run(ref List<SummaryData> list, ref Table table)
+        public static bool Run(ref List<SummaryData> list, ref DGVData table)
         {
             SummaryData obj = new SummaryData();
 
@@ -146,8 +146,6 @@ namespace TransportOptimizer.src.algo
                         SummaryData.SumOf(list.ToArray(), Const.ATTR_PRICE_NAME)
                     );
                     list.Add(sum);
-                    
-                    table.VisibleStatus(false);
                     
                     return false;
                 }

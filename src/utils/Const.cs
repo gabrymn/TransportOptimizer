@@ -18,6 +18,10 @@ namespace TransportOptimizer.src.utils
 
         public static readonly string CELLS_FONT_NAME = "Seguo UI Bold";
         public static readonly int CELLS_FONT_SIZE = 14;
+
+        public static readonly int CELLS_WIDTH = 140;
+        public static readonly int CELLS_HEIGHT = 60;
+
         public static readonly FontStyle FONT_STYLE_STD = FontStyle.Regular;
         public static readonly FontStyle FONT_STYLE_LAST = FontStyle.Bold;
         public static readonly Color NEON_RED = Color.FromArgb(255, 0, 86);
