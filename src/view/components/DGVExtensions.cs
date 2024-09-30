@@ -26,6 +26,20 @@ namespace TransportOptimizer.src.view.components
             dgv.SetHeadersStyle(Const.ATTR_UNIT_PROD, Const.ATTR_DEST, Const.ATTR_TOTAL_NAME);
             dgv.SetBackgroundStyle();
             dgv.SetCellsSize(Const.CELLS_WIDTH, Const.CELLS_HEIGHT);
+            dgv.InitCellValues();
+        }
+
+        private static void InitCellValues(this DataGridView dgv)
+        {
+            try
+            {
+                dgv.Rows.Cast<DataGridViewRow>().ToList().ForEach(row =>
+                    row.Cells.Cast<DataGridViewCell>().ToList().ForEach(cell =>
+                        cell.Value = string.Empty
+                    )
+                );
+            }
+            catch (Exception e) { Console.WriteLine(e); }
         }
 
         private static void SetCustomProps(this DataGridView dgv)

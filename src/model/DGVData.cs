@@ -1,5 +1,7 @@
 ﻿using System.Data;
+using System.Windows.Forms;
 using TransportOptimizer.src.utils;
+using TransportOptimizer.src.view;
 
 namespace TransportOptimizer.src.model
 {
@@ -21,6 +23,20 @@ namespace TransportOptimizer.src.model
         public int CellsCount { get => rowsCount * columnsCount; }
 
         public void Clear() => FillWith(string.Empty);
+
+        public bool IsEmpty()
+        {
+            for (int i = 0; i < rowsCount; i++)
+            {
+                for (int j = 0; j < columnsCount; j++)
+                {
+                    if ((string)dgv.Rows[i].Cells[j].Value != string.Empty)
+                        return false;
+                }
+            }
+
+            return true;
+        }
 
         public DGVData(int rowsCount, int columnsCount, DataGridView dgv)
         {
@@ -425,6 +441,17 @@ namespace TransportOptimizer.src.model
             {
                 Console.WriteLine(e);
                 return false;
+            }
+        }
+
+        public void PopulateWith(List<string[]> rowsData, int totalRows, int totalColumns)
+        {
+            for (int i = 0; i < totalRows + 1; i++)
+            {
+                for (int j = 0; j < totalColumns + 1; j++)
+                {
+                    dgv.Rows[i].Cells[j].Value = rowsData[i][j];
+                }
             }
         }
 

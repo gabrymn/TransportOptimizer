@@ -47,8 +47,8 @@ namespace TransportOptimizer.src.view
         private void InitSaveFileDialog()
         {
             sfd = new SaveFileDialog();
-            sfd.Filter = Const.DEFAULT_OUTPUT_FILE_EXT_FILTER;
-            sfd.DefaultExt = Const.DEFAULT_OUTPUT_FILE_EXT;
+            sfd.Filter = Const.OUTPUT_FILE_EXT_FILTER;
+            sfd.DefaultExt = Const.OUTPUT_FILE_EXT;
             sfd.AddExtension = true;
             sfd.FileName = method + "_" + DateTime.UtcNow.GetHashCode().ToString().Replace("-", "");
             sfd.FileOk += CheckIfFileHasCorrectExtension;
@@ -58,7 +58,7 @@ namespace TransportOptimizer.src.view
         {
             SaveFileDialog sfd = (sender as SaveFileDialog);
 
-            if (Path.GetExtension(sfd.FileName).ToLower() != ("." + Const.DEFAULT_OUTPUT_FILE_EXT))
+            if (Path.GetExtension(sfd.FileName).ToLower() != ("." + Const.OUTPUT_FILE_EXT))
             {
                 e.Cancel = true;
                 System.Media.SystemSounds.Hand.Play();

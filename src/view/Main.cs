@@ -1,4 +1,5 @@
-﻿using TransportOptimizer.src.utils;
+﻿using System.Data;
+using TransportOptimizer.src.utils;
 using TransportOptimizer.src.model;
 using TransportOptimizer.src.middleware;
 using TransportOptimizer.src.view.components;
@@ -264,7 +265,46 @@ namespace TransportOptimizer.src.view
         // Import CSV button
         private void button2_Click(object sender, EventArgs e)
         {
+            if (dgvd.IsEmpty() == false)
+            {
+                System.Media.SystemSounds.Hand.Play();
+                MessageBox.Show(Const.IMPORT_ERROR_DATA_MSG);
+                return;
+            }
 
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = Const.INPUT_FILE_EXT_FILTER;
+            openFileDialog.Title = Const.INPUT_FILE_MSG;
+            openFileDialog.DefaultExt = Const.INPUT_FILE_EXT;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = openFileDialog.FileName;
+
+                var rowsData = CSVReader.Parse(filepath);
+
+                if (rowsData == null)
+                {
+                    System.Media.SystemSounds.Hand.Play();
+                    MessageBox.Show(Const.IMPORT_ERROR_FILE_MSG);
+                    return;
+                }
+
+                // -1 because we have to exclude the bottom row and the righmost column
+                int rows = rowsData.Count-1;
+                int columns = rowsData[0].Length-1;
+
+                dgvd = new DGVData(rows, columns, dataGridView1);
+                dataGridView1.SetVisualElements(rows, columns);
+
+                dgvd.PopulateWith(rowsData, rows, columns);
+            }
+            else
+            {
+                System.Media.SystemSounds.Hand.Play();
+                MessageBox.Show(Const.IMPORT_ERROR_UNKNOWN_MSG);
+            }
         }
     }
 }

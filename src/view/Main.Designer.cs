@@ -287,10 +287,10 @@ namespace TransportOptimizer.src.view
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(230, 212);
+            button4.Location = new Point(199, 124);
             button4.Margin = new Padding(5, 6, 5, 6);
             button4.Name = "button4";
-            button4.Size = new Size(128, 46);
+            button4.Size = new Size(157, 46);
             button4.TabIndex = 15;
             button4.Text = "Clear";
             button4.UseVisualStyleBackColor = false;
@@ -317,10 +317,10 @@ namespace TransportOptimizer.src.view
             btnExeRd.FlatStyle = FlatStyle.Flat;
             btnExeRd.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExeRd.ForeColor = Color.White;
-            btnExeRd.Location = new Point(37, 134);
+            btnExeRd.Location = new Point(37, 124);
             btnExeRd.Margin = new Padding(5, 6, 5, 6);
             btnExeRd.Name = "btnExeRd";
-            btnExeRd.Size = new Size(320, 46);
+            btnExeRd.Size = new Size(159, 46);
             btnExeRd.TabIndex = 11;
             btnExeRd.Text = "Generate";
             btnExeRd.UseVisualStyleBackColor = false;
@@ -380,7 +380,7 @@ namespace TransportOptimizer.src.view
             button2.Location = new Point(37, 212);
             button2.Margin = new Padding(5, 6, 5, 6);
             button2.Name = "button2";
-            button2.Size = new Size(188, 46);
+            button2.Size = new Size(319, 46);
             button2.TabIndex = 24;
             button2.Text = "Import (CSV)";
             button2.UseVisualStyleBackColor = false;

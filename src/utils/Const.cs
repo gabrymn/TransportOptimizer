@@ -32,13 +32,21 @@ namespace TransportOptimizer.src.utils
         public static readonly string ATTR_UNIT_PROD = "UP";
         public static readonly string ATTR_DEST = "D";
 
-        public static readonly string DEFAULT_OUTPUT_FILE_EXT = "json";
-        public static readonly string DEFAULT_OUTPUT_FILE_EXT_FILTER = "JSON file|*.json";
-        
+        public static readonly string INPUT_FILE_EXT = "csv";
+        public static readonly string INPUT_FILE_MSG = "Select a CSV file";
+        public static readonly string INPUT_FILE_EXT_FILTER = "\"CSV files (*.csv)|*.csv";
+
+        public static readonly string IMPORT_ERROR_DATA_MSG = "Could not import the file because the table is not empty";
+        public static readonly string IMPORT_ERROR_UNKNOWN_MSG = "Could not import the file due to an unknown error";
+        public static readonly string IMPORT_ERROR_FILE_MSG = "Could not import the file, invalid file syntax";
+
+        public static readonly string OUTPUT_FILE_EXT = "json";
+        public static readonly string OUTPUT_FILE_EXT_FILTER = "JSON file|*.json";
+
         public static readonly string WRONG_EXT_ERROR_MSG = "Only JSON files allowed, remove the extension to continue";
         public static readonly string PACKAGE_NOT_FOUND_MSG = "JSON package not found, check file path";
         public static readonly string LOST_DATA_MSG = "Due to an unknown error the data was lost";
-        public static readonly string INCONSISTENT_DATA_MSG = "INCONSISTENT DATA ERROR \n\nThe sum of the values in the last row and l must be equal and match the value in the bottom-right cell";
+        public static readonly string INCONSISTENT_DATA_MSG = "INCONSISTENT DATA ERROR \n\nThe sum of the values in the last row and the right-most column must be equal and match the value in the bottom-right cell";
         public static readonly string ALL_CELLS_REQ_MSG = "Execution of this function requires that all cells are filled in";
     }
 }
