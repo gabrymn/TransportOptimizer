@@ -29,9 +29,9 @@ namespace TransportOptimizer.src.view
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgv1 = new DataGridView();
             Column4 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
@@ -48,36 +48,36 @@ namespace TransportOptimizer.src.view
             dgv1.AllowUserToDeleteRows = false;
             dgv1.AllowUserToResizeColumns = false;
             dgv1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 48, 52);
-            dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(44, 48, 52);
+            dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgv1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv1.BackgroundColor = Color.FromArgb(34, 31, 46);
+            dgv1.BackgroundColor = Color.FromArgb(64, 64, 64);
             dgv1.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgv1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(15, 16, 18);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(63, 63, 65);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(15, 16, 18);
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(63, 63, 65);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgv1.ColumnHeadersHeight = 50;
             dgv1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv1.Columns.AddRange(new DataGridViewColumn[] { Column4, Column1, Column2, Column3 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Bold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(114, 117, 119);
-            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgv1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(114, 117, 119);
+            dataGridViewCellStyle6.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgv1.DefaultCellStyle = dataGridViewCellStyle6;
             dgv1.EnableHeadersVisualStyles = false;
             dgv1.GridColor = Color.FromArgb(50, 56, 62);
-            dgv1.Location = new Point(26, 20);
-            dgv1.Margin = new Padding(2);
+            dgv1.Location = new Point(30, 27);
+            dgv1.Margin = new Padding(2, 3, 2, 3);
             dgv1.Name = "dgv1";
             dgv1.ReadOnly = true;
             dgv1.RowHeadersVisible = false;
@@ -86,7 +86,7 @@ namespace TransportOptimizer.src.view
             dgv1.RowTemplate.ReadOnly = true;
             dgv1.ScrollBars = ScrollBars.Vertical;
             dgv1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv1.Size = new Size(751, 380);
+            dgv1.Size = new Size(858, 507);
             dgv1.TabIndex = 3;
             // 
             // Column4
@@ -120,15 +120,15 @@ namespace TransportOptimizer.src.view
             // exit0
             // 
             exit0.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            exit0.BackColor = Color.FromArgb(34, 31, 46);
+            exit0.BackColor = Color.FromArgb(20, 20, 20);
             exit0.Cursor = Cursors.Hand;
             exit0.FlatStyle = FlatStyle.Flat;
-            exit0.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            exit0.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             exit0.ForeColor = Color.White;
-            exit0.Location = new Point(301, 415);
-            exit0.Margin = new Padding(2);
+            exit0.Location = new Point(344, 553);
+            exit0.Margin = new Padding(2, 3, 2, 3);
             exit0.Name = "exit0";
-            exit0.Size = new Size(203, 53);
+            exit0.Size = new Size(232, 71);
             exit0.TabIndex = 4;
             exit0.Text = "Exit";
             exit0.UseVisualStyleBackColor = false;
@@ -137,15 +137,15 @@ namespace TransportOptimizer.src.view
             // save0
             // 
             save0.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            save0.BackColor = Color.FromArgb(34, 31, 46);
+            save0.BackColor = Color.FromArgb(20, 20, 20);
             save0.Cursor = Cursors.Hand;
             save0.FlatStyle = FlatStyle.Flat;
-            save0.Font = new Font("Segoe UI Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            save0.ForeColor = Color.GreenYellow;
-            save0.Location = new Point(509, 415);
-            save0.Margin = new Padding(2);
+            save0.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            save0.ForeColor = Color.White;
+            save0.Location = new Point(582, 553);
+            save0.Margin = new Padding(2, 3, 2, 3);
             save0.Name = "save0";
-            save0.Size = new Size(268, 53);
+            save0.Size = new Size(306, 71);
             save0.TabIndex = 5;
             save0.Text = "Save (JSON)";
             save0.UseVisualStyleBackColor = false;
@@ -153,15 +153,15 @@ namespace TransportOptimizer.src.view
             // 
             // Summary
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(64, 61, 76);
-            ClientSize = new Size(804, 491);
+            BackColor = Color.FromArgb(64, 64, 64);
+            ClientSize = new Size(919, 655);
             Controls.Add(save0);
             Controls.Add(exit0);
             Controls.Add(dgv1);
-            Margin = new Padding(2);
-            MinimumSize = new Size(808, 284);
+            Margin = new Padding(2, 3, 2, 3);
+            MinimumSize = new Size(921, 363);
             Name = "Summary";
             ShowIcon = false;
             SizeGripStyle = SizeGripStyle.Show;

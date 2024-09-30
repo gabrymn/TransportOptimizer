@@ -20,6 +20,8 @@ namespace TransportOptimizer.src.view
 
             CheckForIllegalCrossThreadCalls = true;
             MinimumSize = new Size(Width, 0);
+
+            label3.Focus();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -120,7 +122,7 @@ namespace TransportOptimizer.src.view
                 return;
             }
 
-            if ((Const.TERMS.Contains(textBox1.Text) || Const.TERMS.Contains(textBox2.Text)) == false)
+            if ((Const.TERMS.Contains(tbMinVal.Text) || Const.TERMS.Contains(tbMaxVal.Text)) == false)
             {
                 var min = int.Parse(tbMinVal.Text);
                 var max = int.Parse(tbMaxVal.Text);
@@ -130,7 +132,7 @@ namespace TransportOptimizer.src.view
                 else
                 {
                     System.Media.SystemSounds.Hand.Play();
-                    
+
                     var a = tbMinVal.Text;
                     var b = tbMaxVal.Text;
 
@@ -257,6 +259,12 @@ namespace TransportOptimizer.src.view
             {
                 Console.WriteLine(e);
             }
+        }
+
+        // Import CSV button
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

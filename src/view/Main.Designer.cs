@@ -52,6 +52,7 @@ namespace TransportOptimizer.src.view
             tbMinVal = new TextBox();
             label3 = new Label();
             panel1 = new Panel();
+            button2 = new Button();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -123,7 +124,7 @@ namespace TransportOptimizer.src.view
             button1.BackColor = Color.Black;
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Location = new Point(59, 212);
             button1.Margin = new Padding(5, 6, 5, 6);
@@ -142,7 +143,7 @@ namespace TransportOptimizer.src.view
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(63, 212);
+            button3.Location = new Point(62, 212);
             button3.Margin = new Padding(5, 6, 5, 6);
             button3.Name = "button3";
             button3.Size = new Size(277, 46);
@@ -286,10 +287,10 @@ namespace TransportOptimizer.src.view
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(37, 212);
+            button4.Location = new Point(230, 212);
             button4.Margin = new Padding(5, 6, 5, 6);
             button4.Name = "button4";
-            button4.Size = new Size(320, 46);
+            button4.Size = new Size(128, 46);
             button4.TabIndex = 15;
             button4.Text = "Clear";
             button4.UseVisualStyleBackColor = false;
@@ -355,17 +356,35 @@ namespace TransportOptimizer.src.view
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(20, 20, 20);
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(tbMinVal);
             panel1.Controls.Add(btnExeRd);
-            panel1.Controls.Add(tbMaxVal);
             panel1.Controls.Add(button4);
+            panel1.Controls.Add(tbMaxVal);
             panel1.Location = new Point(431, 36);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.MinimumSize = new Size(400, 292);
             panel1.Name = "panel1";
             panel1.Size = new Size(400, 292);
             panel1.TabIndex = 38;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Top;
+            button2.BackColor = Color.Black;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(37, 212);
+            button2.Margin = new Padding(5, 6, 5, 6);
+            button2.Name = "button2";
+            button2.Size = new Size(188, 46);
+            button2.TabIndex = 24;
+            button2.Text = "Import (CSV)";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // Main
             // 
@@ -414,6 +433,7 @@ namespace TransportOptimizer.src.view
         private System.Windows.Forms.TextBox tbMinVal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private Button button2;
     }
 }
 

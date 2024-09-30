@@ -74,7 +74,7 @@ namespace TransportOptimizer.src.view
             label2.Anchor = AnchorStyles.None;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI Light", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.LightSteelBlue;
+            label2.ForeColor = Color.White;
             label2.Location = new Point(630, 335);
             label2.Name = "label2";
             label2.Size = new Size(215, 93);
@@ -95,7 +95,7 @@ namespace TransportOptimizer.src.view
             label4.Anchor = AnchorStyles.None;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.LightSteelBlue;
+            label4.ForeColor = Color.White;
             label4.Location = new Point(834, 335);
             label4.Name = "label4";
             label4.Size = new Size(179, 93);
