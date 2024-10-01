@@ -31,6 +31,8 @@ namespace TransportOptimizer.src.view
 
             SetTextBoxs([textBox1, textBox2, tbMinVal, tbMaxVal]);
             SetMSComboBox();
+
+            // callback, promise 
         }
 
         public void SetMSComboBox()

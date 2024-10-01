@@ -10,22 +10,38 @@ namespace TransportOptimizer.src.utils
 {
     public abstract class CSVReader
     {
+        /// <summary>
+        /// Reads and parses a CSV file, returning the data as a list of string arrays.
+        /// The file can use either a comma (',') or a semicolon (';') as the delimiter. 
+        /// If the data is invalid or the delimiter cannot be identified, the method returns null.
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <returns>
+        /// A list of string arrays where each array represents a row from the CSV file. 
+        /// Returns null if the delimiter is invalid or if the data fails validation.
+        /// </returns>
         public static List<string[]> Parse(string filepath)
         {
             int rowCount = 0;
             int columnCount = 0;
-            int lastRowLen = 0;
 
             List<string[]> rowsData = new List<string[]>();
+
+            string[] lines = File.ReadAllLines(filepath);
+
+            // Controlla la prima riga per identificare il separatore
+            char separator = IdentifySeparator(lines[0]);
+            if (separator == '0')
+            {
+                return null;
+            }
 
             using (StreamReader sr = new StreamReader(filepath))
             {
                 while (!sr.EndOfStream)
                 {
-                    string[] rowValues = sr.ReadLine().Split(',');
+                    string[] rowValues = sr.ReadLine().Split(separator);
                     
-                    lastRowLen = rowValues.Length;
-
                     rowsData.Add(rowValues);
 
                     rowCount++;
@@ -37,13 +53,18 @@ namespace TransportOptimizer.src.utils
                 }
             }
 
-            if (DataIsValid(rowsData))
+            if (ValidateData(rowsData))
                 return rowsData;
             else
                 return null;
         }
 
-        private static bool DataIsValid(List<string[]> rowsData)
+        /// <summary>
+        /// Validate the parsed data from the CSV file
+        /// </summary>
+        /// <param name="rowsData"></param>
+        /// <returns></returns>
+        private static bool ValidateData(List<string[]> rowsData)
         {
             int i = 0;
             int j = 0;
@@ -73,6 +94,25 @@ namespace TransportOptimizer.src.utils
             }
 
             return true;
+        }
+
+        static char IdentifySeparator(string headerLine)
+        {
+            int commaCount = headerLine.Count(c => c == ',');
+            int semicolonCount = headerLine.Count(c => c == ';');
+
+            if (commaCount > semicolonCount)
+            {
+                return ',';
+            }
+            else if (semicolonCount > commaCount)
+            {
+                return ';';
+            }
+            else
+            {
+                return '0';
+            }
         }
     }
 }
